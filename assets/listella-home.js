@@ -39,6 +39,7 @@
     if (!overlay) return;
 
     // Force autoplay intro videos (mobile Safari requires explicit .play())
+    var autoplayBlocked = false;
     var introVideos = overlay.querySelectorAll('video');
     introVideos.forEach(function(v) {
       v.muted = true;
@@ -47,11 +48,19 @@
       var playPromise = v.play();
       if (playPromise !== undefined) {
         playPromise.catch(function() {
-          // Retry on user interaction as fallback
-          document.addEventListener('touchstart', function retryPlay() {
-            v.play();
-            document.removeEventListener('touchstart', retryPlay);
-          }, { once: true });
+          // Autoplay blocked (Low Power Mode etc) — skip intro entirely
+          if (!autoplayBlocked) {
+            autoplayBlocked = true;
+            overlay.style.display = 'none';
+            document.body.style.overflow = '';
+            document.body.style.position = '';
+            document.body.style.width = '';
+            if (nav) nav.classList.add('ls-nav-visible');
+            if (mobileNav) mobileNav.classList.add('ls-nav-visible');
+            if (footer) footer.classList.add('ls-footer-visible');
+            if (mainContent) mainContent.classList.add('ls-content-visible');
+            clearInterval(counterInterval);
+          }
         });
       }
     });
@@ -61,9 +70,9 @@
     document.body.style.position = 'fixed';
     document.body.style.width = '100vw';
 
-    let count = 0;
-    const maxCount = 3;
-    const counterInterval = setInterval(function() {
+    var count = 0;
+    var maxCount = 3;
+    var counterInterval = setInterval(function() {
       count++;
       if (counter) counter.textContent = count;
 
