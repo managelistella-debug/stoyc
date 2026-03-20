@@ -48,13 +48,19 @@ html { scroll-behavior: smooth; }
   background: #000; z-index: 99999; display: flex;
   align-items: center; justify-content: center; padding: 15vh 15vw;
 }
-.ls-intro-overlay.ls-intro-hidden { pointer-events: none; opacity: 0; transition: opacity 0.6s ease; }
+.ls-intro-overlay.ls-intro-hidden { pointer-events: none; opacity: 0; transition: opacity 1.2s ease; }
 /* Intro fullscreen videos */
 .ls-intro-video {
   position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
   min-width: 100%; min-height: 100%;
   object-fit: cover; pointer-events: none; z-index: 0;
 }
+/* Hide native video controls / play button on all browsers */
+.ls-intro-video::-webkit-media-controls { display: none !important; }
+.ls-intro-video::-webkit-media-controls-panel { display: none !important; }
+.ls-intro-video::-webkit-media-controls-play-button { display: none !important; }
+.ls-intro-video::-webkit-media-controls-start-playback-button { display: none !important; }
+.ls-intro-video::-moz-media-controls { display: none !important; }
 .ls-intro-video-mobile { display: none; }
 @media (max-width: 800px) {
   .ls-intro-video-desktop { display: none; }

@@ -38,6 +38,24 @@
 
     if (!overlay) return;
 
+    // Force autoplay intro videos (mobile Safari requires explicit .play())
+    var introVideos = overlay.querySelectorAll('video');
+    introVideos.forEach(function(v) {
+      v.muted = true;
+      v.setAttribute('muted', '');
+      v.setAttribute('playsinline', '');
+      var playPromise = v.play();
+      if (playPromise !== undefined) {
+        playPromise.catch(function() {
+          // Retry on user interaction as fallback
+          document.addEventListener('touchstart', function retryPlay() {
+            v.play();
+            document.removeEventListener('touchstart', retryPlay);
+          }, { once: true });
+        });
+      }
+    });
+
     // Lock scroll during intro
     document.body.style.overflow = 'hidden';
     document.body.style.position = 'fixed';
@@ -55,8 +73,12 @@
         // Fade out counter
         if (counter) counter.style.opacity = '0';
 
-        // After a beat, hide overlay and reveal content
+        // After a beat, fade overlay into homepage
         setTimeout(function() {
+          // Show nav + footer + main content slightly before fade starts
+          if (mainContent) mainContent.classList.add('ls-content-visible');
+
+          // Start the fade
           overlay.classList.add('ls-intro-hidden');
 
           // Unlock scroll
@@ -64,17 +86,18 @@
           document.body.style.position = '';
           document.body.style.width = '';
 
-          // Show nav + footer + main content
-          if (nav) nav.classList.add('ls-nav-visible');
-          if (mobileNav) mobileNav.classList.add('ls-nav-visible');
-          if (footer) footer.classList.add('ls-footer-visible');
-          if (mainContent) mainContent.classList.add('ls-content-visible');
+          // Show nav + footer partway through fade
+          setTimeout(function() {
+            if (nav) nav.classList.add('ls-nav-visible');
+            if (mobileNav) mobileNav.classList.add('ls-nav-visible');
+            if (footer) footer.classList.add('ls-footer-visible');
+          }, 400);
 
-          // Remove overlay from DOM after transition
+          // Remove overlay from DOM after fade completes
           setTimeout(function() {
             overlay.style.display = 'none';
-          }, 700);
-        }, 800);
+          }, 1400);
+        }, 600);
       }
     }, 1000);
   }
