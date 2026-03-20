@@ -49,18 +49,18 @@ html { scroll-behavior: smooth; }
   align-items: center; justify-content: center; padding: 15vh 15vw;
 }
 .ls-intro-overlay.ls-intro-hidden { pointer-events: none; opacity: 0; transition: opacity 0.6s ease; }
-.ls-intro-media-wrapper {
-  position: absolute; display: flex; align-items: center; justify-content: center;
-  aspect-ratio: 1/1; max-height: 80vh; max-width: 80vw; margin: auto;
-  overflow: hidden; pointer-events: none; opacity: 0; transition: opacity 0.5s ease;
+/* Intro fullscreen videos */
+.ls-intro-video {
+  position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+  object-fit: cover; pointer-events: none; z-index: 0;
 }
-.ls-intro-media-wrapper.ls-intro-video-visible { opacity: 1; }
-.ls-intro-media { width: 100%; height: 100%; object-fit: cover; }
+.ls-intro-video-mobile { display: none; }
+@media (max-width: 800px) {
+  .ls-intro-video-desktop { display: none; }
+  .ls-intro-video-mobile { display: block; }
+}
 .ls-intro-counter {
-  color: var(--ls-color); font-family: var(--ls-serif-font);
-  font-size: clamp(20px, 4vw, 120px); font-weight: 400;
-  position: fixed; left: 50%; top: 50%; transform: translate(-50%, -50%);
-  letter-spacing: -0.05em; z-index: 100001; transition: opacity 0.5s ease-out;
+  display: none;
 }
 
 /* === Navigation === */
