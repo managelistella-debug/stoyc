@@ -655,6 +655,11 @@ button.dgb-filter-btn.dgb-filter-active {
   flex-shrink: 0; filter: brightness(0) invert(1);
 }
 .dgb-home.dgb-light .dgb-tool-logo { filter: brightness(0); }
+.dgb-home.dgb-light .dgb-icon-item img,
+.dgb-home.dgb-light .dgb-icon-rockball img,
+.dgb-home.dgb-light .dgb-icon-knight img,
+.dgb-home.dgb-light .dgb-icon-clock img,
+.dgb-home.dgb-light .dgb-icon-trex img { filter: none; }
 .dgb-tool-logo:hover { opacity: 1; }
 @keyframes dgb-tools-scroll { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
 
@@ -810,11 +815,17 @@ button.dgb-filter-btn.dgb-filter-active {
   .dgb-cursor { display: none !important; }
   .dgb-project-info { opacity: 1; }
   .dgb-tagline-text { font-size: clamp(28px, 10vw, 60px); }
+  /* Light mode: keep floating images fully visible */
+  .dgb-home.dgb-light .dgb-icon-rockball,
+  .dgb-home.dgb-light .dgb-icon-knight,
+  .dgb-home.dgb-light .dgb-icon-clock,
+  .dgb-home.dgb-light .dgb-icon-trex { opacity: 0.7; }
   /* Hide footer globe, text, instagram on mobile — keep only toggle */
   .dgb-footer-center { display: none; }
   .dgb-footer-right-section { display: none; }
   .dgb-footer-inner { flex-direction: row; justify-content: center; }
-  .dgb-footer { position: fixed; bottom: 0; left: 0; width: 100%; z-index: 100; padding: 12px 0; }
+  .dgb-footer { position: fixed; bottom: 0; left: 0; width: 100%; z-index: 100; padding: 16px 20px; background: var(--dgb-bg); border-top: 1px solid rgba(var(--dgb-color-rgb), 0.1); }
+  .dgb-home { padding-bottom: 60px; }
 }
 
 /* === Chrome Shine Hover Effect — on the actual letters === */
