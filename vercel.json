@@ -1,5 +1,3 @@
 {
-  "rewrites": [
-    { "source": "/", "destination": "/dgb-homepage.html" }
-  ]
+  "cleanUrls": true
 }

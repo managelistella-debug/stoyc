@@ -1,5 +1,5 @@
 /* ============================================
-   DAMN GOOD BRANDS — Homepage JavaScript
+   LISTELLA — Homepage JavaScript
    ============================================ */
 
 (function() {
@@ -9,7 +9,7 @@
   document.addEventListener('DOMContentLoaded', init);
 
   function init() {
-    const home = document.getElementById('dgb-home');
+    const home = document.getElementById('ls-home');
     if (!home) return;
 
     introSequence();
@@ -29,12 +29,12 @@
 
   /* === INTRO SEQUENCE === */
   function introSequence() {
-    const overlay = document.getElementById('dgb-intro-overlay');
-    const counter = document.getElementById('dgb-intro-counter');
-    const nav = document.getElementById('dgb-nav');
-    const mobileNav = document.getElementById('dgb-mobile-nav');
-    const footer = document.getElementById('dgb-footer');
-    const mainContent = document.getElementById('dgb-main-content');
+    const overlay = document.getElementById('ls-intro-overlay');
+    const counter = document.getElementById('ls-intro-counter');
+    const nav = document.getElementById('ls-nav');
+    const mobileNav = document.getElementById('ls-mobile-nav');
+    const footer = document.getElementById('ls-footer');
+    const mainContent = document.getElementById('ls-main-content');
 
     if (!overlay) return;
 
@@ -57,7 +57,7 @@
 
         // After a beat, hide overlay and reveal content
         setTimeout(function() {
-          overlay.classList.add('dgb-intro-hidden');
+          overlay.classList.add('ls-intro-hidden');
 
           // Unlock scroll
           document.body.style.overflow = '';
@@ -65,10 +65,10 @@
           document.body.style.width = '';
 
           // Show nav + footer + main content
-          if (nav) nav.classList.add('dgb-nav-visible');
-          if (mobileNav) mobileNav.classList.add('dgb-nav-visible');
-          if (footer) footer.classList.add('dgb-footer-visible');
-          if (mainContent) mainContent.classList.add('dgb-content-visible');
+          if (nav) nav.classList.add('ls-nav-visible');
+          if (mobileNav) mobileNav.classList.add('ls-nav-visible');
+          if (footer) footer.classList.add('ls-footer-visible');
+          if (mainContent) mainContent.classList.add('ls-content-visible');
 
           // Remove overlay from DOM after transition
           setTimeout(function() {
@@ -81,7 +81,7 @@
 
   /* === TIME DISPLAY === */
   function initTimeDisplay() {
-    var timeEl = document.getElementById('dgb-time-display');
+    var timeEl = document.getElementById('ls-time-display');
     if (!timeEl) return;
 
     function updateTime() {
@@ -101,7 +101,7 @@
 
   /* === DRAGGABLE ICONS === */
   function initDraggableIcons() {
-    var icons = document.querySelectorAll('[data-dgb-drag]');
+    var icons = document.querySelectorAll('[data-ls-drag]');
     icons.forEach(function(icon) {
       var isDragging = false;
       var startX, startY, initialX, initialY;
@@ -112,7 +112,7 @@
 
       function dragStart(e) {
         isDragging = true;
-        icon._dgbDragged = true;
+        icon._lsDragged = true;
         if (e.type === 'touchstart') {
           startX = e.touches[0].clientX;
           startY = e.touches[0].clientY;
@@ -170,7 +170,7 @@
       var offsetX = Math.random() * Math.PI * 2;
       var offsetRot = Math.random() * Math.PI * 2;
       var startTime = performance.now();
-      icon._dgbDragged = false;
+      icon._lsDragged = false;
 
       // Spring push-away state — slow elastic rebound
       var pushX = 0, pushY = 0;
@@ -181,7 +181,7 @@
       var lastPushTime = 0;  // cooldown to prevent spam
 
       icon.addEventListener('mouseenter', function(e) {
-        if (icon._dgbDragged) return;
+        if (icon._lsDragged) return;
         var now = performance.now();
         if (now - lastPushTime < 1200) return; // 1.2s cooldown between pushes
         lastPushTime = now;
@@ -196,7 +196,7 @@
       });
 
       function float(time) {
-        if (!icon._dgbDragged) {
+        if (!icon._lsDragged) {
           var elapsed = (time - startTime) / 1000;
           var floatY = Math.sin(elapsed / speedY + offsetY) * ampY;
           var floatX = Math.cos(elapsed / speedX + offsetX) * ampX;
@@ -224,7 +224,7 @@
 
   /* === SCROLL REVEAL === */
   function initScrollReveal() {
-    var reveals = document.querySelectorAll('[data-dgb-reveal]');
+    var reveals = document.querySelectorAll('[data-ls-reveal]');
     if (!reveals.length) return;
 
     var observer = new IntersectionObserver(function(entries) {
@@ -232,10 +232,10 @@
         if (entry.isIntersecting) {
           // Check if this is a heading that should animate word by word
           var el = entry.target;
-          if (el.classList.contains('dgb-heading')) {
+          if (el.classList.contains('ls-heading')) {
             animateWords(el);
           } else {
-            el.classList.add('dgb-revealed');
+            el.classList.add('ls-revealed');
           }
           observer.unobserve(el);
         }
@@ -251,19 +251,19 @@
   }
 
   function animateWords(heading) {
-    var hasPenMarks = heading.classList.contains('dgb-has-pen-marks');
+    var hasPenMarks = heading.classList.contains('ls-has-pen-marks');
 
     if (hasPenMarks) {
       // For pen-mark headings, preserve the inner HTML structure with SVGs
       // Wrap each text node's words in spans, but leave pen-word spans intact
       wrapWordsPreservingStructure(heading);
-      heading.classList.add('dgb-revealed');
+      heading.classList.add('ls-revealed');
 
       // Trigger word-by-word reveal
       requestAnimationFrame(function() {
-        var wordSpans = heading.querySelectorAll('.dgb-word');
+        var wordSpans = heading.querySelectorAll('.ls-word');
         wordSpans.forEach(function(span) {
-          span.classList.add('dgb-word-visible');
+          span.classList.add('ls-word-visible');
         });
 
         // After words are revealed, trigger pen marks sequentially
@@ -271,20 +271,20 @@
         var wordRevealDuration = totalWords * 40 + 350; // total time for words to appear
 
         // Find pen marks and sort by order
-        var penMarks = heading.querySelectorAll('.dgb-pen-word');
+        var penMarks = heading.querySelectorAll('.ls-pen-word');
         var sorted = Array.prototype.slice.call(penMarks).sort(function(a, b) {
           return (parseInt(a.getAttribute('data-pen-order')) || 0) - (parseInt(b.getAttribute('data-pen-order')) || 0);
         });
 
         sorted.forEach(function(mark, i) {
           setTimeout(function() {
-            var paths = mark.querySelectorAll('.dgb-pen-path');
+            var paths = mark.querySelectorAll('.ls-pen-path');
             paths.forEach(function(path) {
               // Measure actual path length for accurate dash
               var len = path.getTotalLength ? path.getTotalLength() : 1000;
               path.style.strokeDasharray = len;
               path.style.strokeDashoffset = len;
-              path.classList.add('dgb-pen-animate');
+              path.classList.add('ls-pen-animate');
             });
           }, wordRevealDuration + (i * 600));
         });
@@ -294,11 +294,11 @@
       var text = heading.innerHTML.trim();
       var words = text.split(/\s+/).filter(function(w) { return w.length > 0; });
       heading.innerHTML = '';
-      heading.classList.add('dgb-revealed');
+      heading.classList.add('ls-revealed');
 
       words.forEach(function(word, i) {
         var span = document.createElement('span');
-        span.className = 'dgb-word';
+        span.className = 'ls-word';
         span.innerHTML = word;
         span.style.transitionDelay = (i * 0.04) + 's';
         heading.appendChild(span);
@@ -306,17 +306,17 @@
       });
 
       requestAnimationFrame(function() {
-        var wordSpans = heading.querySelectorAll('.dgb-word');
+        var wordSpans = heading.querySelectorAll('.ls-word');
         wordSpans.forEach(function(span) {
-          span.classList.add('dgb-word-visible');
+          span.classList.add('ls-word-visible');
         });
       });
     }
   }
 
   function wrapWordsPreservingStructure(heading) {
-    // Walk through child nodes, wrap bare text words in .dgb-word spans,
-    // and wrap .dgb-pen-word elements in .dgb-word spans too
+    // Walk through child nodes, wrap bare text words in .ls-word spans,
+    // and wrap .ls-pen-word elements in .ls-word spans too
     var nodes = Array.prototype.slice.call(heading.childNodes);
     var wordIndex = 0;
 
@@ -332,7 +332,7 @@
             if (part) frag.appendChild(document.createTextNode(part));
           } else {
             var span = document.createElement('span');
-            span.className = 'dgb-word';
+            span.className = 'ls-word';
             span.textContent = part;
             span.style.transitionDelay = (wordIndex * 0.04) + 's';
             wordIndex++;
@@ -341,10 +341,10 @@
         });
 
         heading.replaceChild(frag, node);
-      } else if (node.nodeType === 1 && node.classList.contains('dgb-pen-word')) {
-        // Pen-word element — wrap in a .dgb-word span
+      } else if (node.nodeType === 1 && node.classList.contains('ls-pen-word')) {
+        // Pen-word element — wrap in a .ls-word span
         var wrapper = document.createElement('span');
-        wrapper.className = 'dgb-word';
+        wrapper.className = 'ls-word';
         wrapper.style.transitionDelay = (wordIndex * 0.04) + 's';
         wordIndex++;
         heading.insertBefore(wrapper, node);
@@ -355,18 +355,18 @@
 
   /* === SLIDER === */
   function initSlider() {
-    var viewport = document.getElementById('dgb-slider-viewport');
+    var viewport = document.getElementById('ls-slider-viewport');
     if (!viewport) return;
 
-    var slides = viewport.querySelectorAll('.dgb-slide');
+    var slides = viewport.querySelectorAll('.ls-slide');
     if (slides.length === 0) return;
 
     var currentIndex = 0;
     var totalSlides = slides.length;
-    var currentEl = document.getElementById('dgb-slide-current');
-    var totalEl = document.getElementById('dgb-slide-total');
-    var prevBtn = document.getElementById('dgb-prev-slide');
-    var nextBtn = document.getElementById('dgb-next-slide');
+    var currentEl = document.getElementById('ls-slide-current');
+    var totalEl = document.getElementById('ls-slide-total');
+    var prevBtn = document.getElementById('ls-prev-slide');
+    var nextBtn = document.getElementById('ls-next-slide');
 
     // Set total count
     if (totalEl) totalEl.textContent = pad(totalSlides);
@@ -374,9 +374,9 @@
     function pad(n) { return n < 10 ? '0' + n : '' + n; }
 
     function goToSlide(index) {
-      slides.forEach(function(s) { s.classList.remove('dgb-slide-active'); });
+      slides.forEach(function(s) { s.classList.remove('ls-slide-active'); });
       currentIndex = ((index % totalSlides) + totalSlides) % totalSlides;
-      slides[currentIndex].classList.add('dgb-slide-active');
+      slides[currentIndex].classList.add('ls-slide-active');
       if (currentEl) currentEl.textContent = pad(currentIndex + 1);
     }
 
@@ -391,8 +391,8 @@
 
   /* === THEME TOGGLE (footer toggle switch) === */
   function initThemeToggle() {
-    var toggle = document.getElementById('dgb-theme-toggle');
-    var home = document.getElementById('dgb-home');
+    var toggle = document.getElementById('ls-theme-toggle');
+    var home = document.getElementById('ls-home');
 
     if (!toggle || !home) return;
 
@@ -403,7 +403,7 @@
     toggle.addEventListener('click', function() {
       isLight = !isLight;
       toggle.classList.toggle('active', isLight);
-      home.classList.toggle('dgb-light', isLight);
+      home.classList.toggle('ls-light', isLight);
       if (isLight) {
         lightsOnAudio.currentTime = 0;
         lightsOnAudio.play().catch(function(){});
@@ -416,27 +416,27 @@
 
   /* === MOBILE MENU === */
   function initMobileMenu() {
-    var toggle = document.getElementById('dgb-menu-toggle');
-    var menu = document.getElementById('dgb-mobile-menu-content');
+    var toggle = document.getElementById('ls-menu-toggle');
+    var menu = document.getElementById('ls-mobile-menu-content');
 
     if (!toggle || !menu) return;
 
-    var closeBtn = document.getElementById('dgb-menu-close');
+    var closeBtn = document.getElementById('ls-menu-close');
 
     var scrollY = 0;
     function openMenu() {
       scrollY = window.scrollY;
       toggle.classList.add('active');
-      menu.classList.add('dgb-menu-open');
-      document.body.classList.add('dgb-menu-locked');
+      menu.classList.add('ls-menu-open');
+      document.body.classList.add('ls-menu-locked');
       document.body.style.top = '-' + scrollY + 'px';
       document.body.style.position = 'fixed';
       document.body.style.width = '100%';
     }
     function closeMenu() {
       toggle.classList.remove('active');
-      menu.classList.remove('dgb-menu-open');
-      document.body.classList.remove('dgb-menu-locked');
+      menu.classList.remove('ls-menu-open');
+      document.body.classList.remove('ls-menu-locked');
       document.body.style.position = '';
       document.body.style.top = '';
       document.body.style.width = '';
@@ -444,12 +444,12 @@
     }
 
     toggle.addEventListener('click', function() {
-      if (menu.classList.contains('dgb-menu-open')) { closeMenu(); } else { openMenu(); }
+      if (menu.classList.contains('ls-menu-open')) { closeMenu(); } else { openMenu(); }
     });
 
     if (closeBtn) { closeBtn.addEventListener('click', closeMenu); }
 
-    var links = menu.querySelectorAll('.dgb-nav-link');
+    var links = menu.querySelectorAll('.ls-nav-link');
     links.forEach(function(link) {
       link.addEventListener('click', closeMenu);
     });
@@ -457,8 +457,8 @@
 
   /* === CUSTOM PROJECT CURSOR === */
   function initProjectCursor() {
-    var cursor = document.getElementById('dgb-cursor');
-    var cards = document.querySelectorAll('.dgb-project-card');
+    var cursor = document.getElementById('ls-cursor');
+    var cards = document.querySelectorAll('.ls-project-card');
     if (!cursor || !cards.length) return;
 
     var mouseX = 0, mouseY = 0, curX = 0, curY = 0;
@@ -472,11 +472,11 @@
     cards.forEach(function(card) {
       card.addEventListener('mouseenter', function() {
         isOver = true;
-        cursor.classList.add('dgb-cursor-visible');
+        cursor.classList.add('ls-cursor-visible');
       });
       card.addEventListener('mouseleave', function() {
         isOver = false;
-        cursor.classList.remove('dgb-cursor-visible');
+        cursor.classList.remove('ls-cursor-visible');
       });
     });
 
@@ -493,8 +493,8 @@
 
   /* === PROJECT FILTERS === */
   function initProjectFilters() {
-    var filterBtns = document.querySelectorAll('.dgb-filter-btn');
-    var cards = document.querySelectorAll('.dgb-project-card');
+    var filterBtns = document.querySelectorAll('.ls-filter-btn');
+    var cards = document.querySelectorAll('.ls-project-card');
     if (!filterBtns.length || !cards.length) return;
 
     var filterOnAudio = new Audio('assets/lights-on.mp3');
@@ -515,16 +515,16 @@
         if (snd) { snd.currentTime = 0; snd.play().catch(function(){}); }
 
         // Update active button
-        filterBtns.forEach(function(b) { b.classList.remove('dgb-filter-active'); });
-        btn.classList.add('dgb-filter-active');
+        filterBtns.forEach(function(b) { b.classList.remove('ls-filter-active'); });
+        btn.classList.add('ls-filter-active');
 
         // Filter cards (supports space-separated multi-category)
         cards.forEach(function(card) {
           var categories = card.getAttribute('data-category').split(' ');
           if (filter === 'all' || categories.indexOf(filter) !== -1) {
-            card.classList.remove('dgb-filtered-out');
+            card.classList.remove('ls-filtered-out');
           } else {
-            card.classList.add('dgb-filtered-out');
+            card.classList.add('ls-filtered-out');
           }
         });
       });
@@ -533,20 +533,20 @@
 
   /* === FAQ ACCORDION === */
   function initFAQ() {
-    var items = document.querySelectorAll('.dgb-faq-item');
+    var items = document.querySelectorAll('.ls-faq-item');
     items.forEach(function(item) {
-      var question = item.querySelector('.dgb-faq-question');
+      var question = item.querySelector('.ls-faq-question');
       if (!question) return;
 
       question.addEventListener('click', function() {
-        var wasOpen = item.classList.contains('dgb-faq-open');
+        var wasOpen = item.classList.contains('ls-faq-open');
 
         // Close all
-        items.forEach(function(i) { i.classList.remove('dgb-faq-open'); });
+        items.forEach(function(i) { i.classList.remove('ls-faq-open'); });
 
         // Toggle current
         if (!wasOpen) {
-          item.classList.add('dgb-faq-open');
+          item.classList.add('ls-faq-open');
         }
       });
     });
@@ -570,23 +570,23 @@
 
   /* === HERO GLASS DOT CURSOR === */
   function initHeroCursor() {
-    var dot = document.getElementById('dgb-hero-cursor');
-    var hero = document.getElementById('dgb-hero');
+    var dot = document.getElementById('ls-hero-cursor');
+    var hero = document.getElementById('ls-hero');
     if (!dot || !hero) return;
 
     hero.addEventListener('mousemove', function(e) {
       dot.style.left = e.clientX + 'px';
       dot.style.top = e.clientY + 'px';
-      dot.classList.add('dgb-hero-cursor-visible');
+      dot.classList.add('ls-hero-cursor-visible');
     });
     hero.addEventListener('mouseleave', function() {
-      dot.classList.remove('dgb-hero-cursor-visible');
+      dot.classList.remove('ls-hero-cursor-visible');
     });
   }
 
-  /* === SCROLL WHITE — DGB-style word-group grey→white on scroll === */
+  /* === SCROLL WHITE — Listella-style word-group grey→white on scroll === */
   function initScrollWhite() {
-    var els = document.querySelectorAll('.dgb-scroll-white');
+    var els = document.querySelectorAll('.ls-scroll-white');
     if (!els.length) return;
 
     // Wrap each word in a span
@@ -596,7 +596,7 @@
       el.innerHTML = '';
       words.forEach(function(word, i) {
         var span = document.createElement('span');
-        span.className = 'dgb-scroll-word';
+        span.className = 'ls-scroll-word';
         span.textContent = word;
         el.appendChild(span);
         if (i < words.length - 1) {
@@ -610,7 +610,7 @@
       var vh = window.innerHeight;
       els.forEach(function(el) {
         var rect = el.getBoundingClientRect();
-        var words = el.querySelectorAll('.dgb-scroll-word');
+        var words = el.querySelectorAll('.ls-scroll-word');
         if (!words.length) return;
 
         // Progress: 0 when element enters bottom of viewport, 1 when it reaches middle
@@ -620,9 +620,9 @@
         var litCount = Math.floor(progress * words.length);
         words.forEach(function(w, i) {
           if (i < litCount) {
-            w.classList.add('dgb-word-lit');
+            w.classList.add('ls-word-lit');
           } else {
-            w.classList.remove('dgb-word-lit');
+            w.classList.remove('ls-word-lit');
           }
         });
       });

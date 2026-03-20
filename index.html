@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Listella | Design &amp; Marketing Studio</title>
+  <style>
+    @font-face { font-family: 'Listella-UI'; font-weight: 400; src: url('assets/fonts/NordRegular.woff2') format('woff2'); }
+    @font-face { font-family: 'Listella-UI'; font-weight: 500; src: url('assets/fonts/NordMedium.woff2') format('woff2'); }
+    @font-face { font-family: 'Listella-Heading'; font-weight: 900; src: url('assets/fonts/NeueMontrealBold.woff2') format('woff2'); }
+    @font-face { font-family: 'Listella-Blackletter'; font-weight: 400; src: url('assets/fonts/Chomsky.woff2') format('woff2'); }
+    @font-face { font-family: 'Listella-Serif'; font-weight: 400; src: url('assets/fonts/InstrumentSerif-Regular.ttf') format('truetype'); }
+    @font-face { font-family: 'Listella-Condensed'; font-weight: 400; src: url('assets/fonts/F37Stout-BlackCompressed.ttf') format('truetype'); }
+    html, body { margin: 0; padding: 0; background: #000; overflow-x: hidden; }
+    body { min-height: 100vh; }
+  </style>
+  <link rel="stylesheet" href="assets/listella-home.css">
+</head>
+<body>
+<div class="ls-home" id="ls-home">
+
+  <!-- INTRO OVERLAY -->
+  <div class="ls-intro-overlay" id="ls-intro-overlay">
+    <div class="ls-intro-counter" id="ls-intro-counter">0</div>
+  </div>
+
+  <!-- DESKTOP NAV -->
+  <nav class="ls-nav" id="ls-nav">
+    <div class="ls-nav-inner">
+      <div class="ls-nav-group">
+        <a href="#work" class="ls-nav-link">Work</a>
+        <a href="#services" class="ls-nav-link">Services</a>
+      </div>
+      <div class="ls-logo">
+        <a href="#">
+          <svg viewBox="0 0 412.11 80.95" xmlns="http://www.w3.org/2000/svg" style="width:130px;height:auto;">
+            <path d="M192.97,25.37c4.56.96,1.13,8.73-2.13,9.86-6.41,1.03-14.22-.64-20.45.19-.84.11-1.04.12-1.68.72s-4.88,9.79-5.49,11.3c-5.62,14.18-.54,21.37,13.34,12.37,12.96-8.41,17.94-19.64,34.43-25.06,7.98-2.62,25.71-4.99,23.38,8.5-1.61,9.34-18.61,18.32-26.76,21.45-.59.78,3.54,1.79,4.13,1.86,8.99,1.06,20.52-6.51,27.29-11.95,1.27-1.02,5.09-3.95,5.87-4.92.9-1.12,3.76-12.01,5.01-14.9,4.27-9.84,18.59-32.65,29.68-34.62,2.97-.53,6.19,1.22,6.71,4.37,1.77,10.74-8.9,24.59-15.35,32.57-5.7,7.05-9.56,8.02-8.65,18.73,1.62,18.96,21.41-1.92,27.41-6.7,1.33-12.8,20.93-46.86,33.85-48.65,7.33-1.02,8.61,5.07,7.17,11-3.25,13.44-13.62,22.13-21.36,32.36-3.88,5.13-4.22,21.26,4.99,19.86,6.11-.93,17.56-13.34,22.87-17.43,6.48-5,14.3-8.66,22.15-10.95,3.61-1.05,16.98-5.11,16.73,1.79-.16,4.28-6.04,5.01-9.01,6.4-4.84,2.27-17.71,8.69-19.12,13.98-2.43,9.09,9.92,1.47,12.88-.55,5.84-3.99,15.96-15.61,23.14-7.12,3.39,4,.74,13.17,8.26,8.76,3.97-2.33,11.85-11.35,15.36-11.99,3.7-.67,4.9,1.31,4.33,4.81-.88,5.39-11.83,15.33-16.26,18.77-6.68,5.19-19.71,14.08-24.32,1.86-.57-1.52-1.03-6.33-2.73-6.37-5.05,3.23-9.67,7.44-14.99,10.46-11.64,6.6-19.98,6.39-26.31-6.61-8.71,8.04-23.41,16.98-33.13,5.27-3.24-3.9-3.1-6.49-4.54-10.82-.63-1.9-1.16.22-1.91,1-4.9,5.07-15.23,13.29-22.08,14.87-12.23,2.83-18.7-5.67-20.91-16.57-12.8,10.3-27.5,18.78-44.63,17.26-7.01-.62-14.32-4.72-16.83-11.51-5.83,3.81-11.13,8.8-17.98,10.8-11.9,3.48-23.45-.78-24.49-14.15-10.53,10.54-26.68,18.21-41.76,13.67-4.76-1.43-11.2-6.45-7.45-11.78,2.18-3.1,7.57-5.95,11.43-5.14,1.93.4,6.01,4.82,6.96.5,1.05-4.77-4.31-9.12-6.91-12.58-9.69,8.29-17.94,18.47-28.84,25.3-13.7,8.58-26.38,6.36-32.07-9.5-9.44,9.81-29.8,23.06-39.04,5.91S7.22,26.61,18.98,12.68c3.68-4.36,17.62-19.2,22.33-9.39,4.06,8.47-7.45,24.88-12.76,31.42-2.47,3.04-8.09,7.92-9.49,11.14-2.59,5.96-2.45,20.45,7.45,17.51,4.2-1.25,15.18-10.45,18.14-14.01,4.94-5.93,5.75-10.69,14.03-13.8,8.94-3.36,15.34.95,10.94,10.45-1.6,3.45-9.37,12.12-9.24,14.53.17,3.16,3.66,4.33,6.36,4.17,7.09-.42,17.23-10.83,22.56-15.35,1.45-1.23,8.52-6.02,8.8-7.08s-.52-2.15.22-4.05c2.08-5.4,17.6-12.5,20.61-5.54,1.45,3.35-2.11,5.14-1.36,7.57.48,1.58,4.72,4.84,6.03,6.47,2.64,3.27,4.52,7.05,3.74,11.39l-3.49,6.58c2.79-1.46,5.37-3.17,7.87-5.08,2.64-2.01,10.95-8.64,12.73-10.77,2.2-2.64,3.11-9.25,5.55-12.2.14-1.01-.07-.6-.71-.7-4.47-.68-13.03.84-11.65-5.89,1.53-7.47,12.7-3.76,18.06-4.75,1.61-3.02,5.71-11.85,8.59-13.24,3.08-1.48,11.59.3,12.83,3.75.86,2.38-2.37,7.05-3.1,9.56h18.96ZM213.24,43.23c-4.81.8-12.8,8.7-10.46,14.06.51.42.96.12,1.48,0,1.43-.36,10.4-5.83,11.74-6.99,4.35-3.78,3.46-8.1-2.75-7.06Z" fill="currentColor"/>
+            <path d="M76.93,9.2c12.63-1.68,12.12,10.44,3.64,16.1-11.55,7.7-24.17-8.32-8.79-14.53,1.42-.58,3.67-1.36,5.15-1.56Z" fill="currentColor"/>
+          </svg>
+        </a>
+      </div>
+      <div class="ls-nav-group">
+        <a href="#faq" class="ls-nav-link">FAQ</a>
+        <a href="contact.html" class="ls-nav-link">Contact</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- MOBILE NAV -->
+  <nav class="ls-mobile-nav" id="ls-mobile-nav">
+    <div class="ls-mobile-header">
+      <div style="width:25px"></div>
+      <div class="ls-logo">
+        <a href="#">
+          <svg viewBox="0 0 412.11 80.95" xmlns="http://www.w3.org/2000/svg" style="width:104px;height:auto;">
+            <path d="M192.97,25.37c4.56.96,1.13,8.73-2.13,9.86-6.41,1.03-14.22-.64-20.45.19-.84.11-1.04.12-1.68.72s-4.88,9.79-5.49,11.3c-5.62,14.18-.54,21.37,13.34,12.37,12.96-8.41,17.94-19.64,34.43-25.06,7.98-2.62,25.71-4.99,23.38,8.5-1.61,9.34-18.61,18.32-26.76,21.45-.59.78,3.54,1.79,4.13,1.86,8.99,1.06,20.52-6.51,27.29-11.95,1.27-1.02,5.09-3.95,5.87-4.92.9-1.12,3.76-12.01,5.01-14.9,4.27-9.84,18.59-32.65,29.68-34.62,2.97-.53,6.19,1.22,6.71,4.37,1.77,10.74-8.9,24.59-15.35,32.57-5.7,7.05-9.56,8.02-8.65,18.73,1.62,18.96,21.41-1.92,27.41-6.7,1.33-12.8,20.93-46.86,33.85-48.65,7.33-1.02,8.61,5.07,7.17,11-3.25,13.44-13.62,22.13-21.36,32.36-3.88,5.13-4.22,21.26,4.99,19.86,6.11-.93,17.56-13.34,22.87-17.43,6.48-5,14.3-8.66,22.15-10.95,3.61-1.05,16.98-5.11,16.73,1.79-.16,4.28-6.04,5.01-9.01,6.4-4.84,2.27-17.71,8.69-19.12,13.98-2.43,9.09,9.92,1.47,12.88-.55,5.84-3.99,15.96-15.61,23.14-7.12,3.39,4,.74,13.17,8.26,8.76,3.97-2.33,11.85-11.35,15.36-11.99,3.7-.67,4.9,1.31,4.33,4.81-.88,5.39-11.83,15.33-16.26,18.77-6.68,5.19-19.71,14.08-24.32,1.86-.57-1.52-1.03-6.33-2.73-6.37-5.05,3.23-9.67,7.44-14.99,10.46-11.64,6.6-19.98,6.39-26.31-6.61-8.71,8.04-23.41,16.98-33.13,5.27-3.24-3.9-3.1-6.49-4.54-10.82-.63-1.9-1.16.22-1.91,1-4.9,5.07-15.23,13.29-22.08,14.87-12.23,2.83-18.7-5.67-20.91-16.57-12.8,10.3-27.5,18.78-44.63,17.26-7.01-.62-14.32-4.72-16.83-11.51-5.83,3.81-11.13,8.8-17.98,10.8-11.9,3.48-23.45-.78-24.49-14.15-10.53,10.54-26.68,18.21-41.76,13.67-4.76-1.43-11.2-6.45-7.45-11.78,2.18-3.1,7.57-5.95,11.43-5.14,1.93.4,6.01,4.82,6.96.5,1.05-4.77-4.31-9.12-6.91-12.58-9.69,8.29-17.94,18.47-28.84,25.3-13.7,8.58-26.38,6.36-32.07-9.5-9.44,9.81-29.8,23.06-39.04,5.91S7.22,26.61,18.98,12.68c3.68-4.36,17.62-19.2,22.33-9.39,4.06,8.47-7.45,24.88-12.76,31.42-2.47,3.04-8.09,7.92-9.49,11.14-2.59,5.96-2.45,20.45,7.45,17.51,4.2-1.25,15.18-10.45,18.14-14.01,4.94-5.93,5.75-10.69,14.03-13.8,8.94-3.36,15.34.95,10.94,10.45-1.6,3.45-9.37,12.12-9.24,14.53.17,3.16,3.66,4.33,6.36,4.17,7.09-.42,17.23-10.83,22.56-15.35,1.45-1.23,8.52-6.02,8.8-7.08s-.52-2.15.22-4.05c2.08-5.4,17.6-12.5,20.61-5.54,1.45,3.35-2.11,5.14-1.36,7.57.48,1.58,4.72,4.84,6.03,6.47,2.64,3.27,4.52,7.05,3.74,11.39l-3.49,6.58c2.79-1.46,5.37-3.17,7.87-5.08,2.64-2.01,10.95-8.64,12.73-10.77,2.2-2.64,3.11-9.25,5.55-12.2.14-1.01-.07-.6-.71-.7-4.47-.68-13.03.84-11.65-5.89,1.53-7.47,12.7-3.76,18.06-4.75,1.61-3.02,5.71-11.85,8.59-13.24,3.08-1.48,11.59.3,12.83,3.75.86,2.38-2.37,7.05-3.1,9.56h18.96ZM213.24,43.23c-4.81.8-12.8,8.7-10.46,14.06.51.42.96.12,1.48,0,1.43-.36,10.4-5.83,11.74-6.99,4.35-3.78,3.46-8.1-2.75-7.06Z" fill="currentColor"/>
+            <path d="M76.93,9.2c12.63-1.68,12.12,10.44,3.64,16.1-11.55,7.7-24.17-8.32-8.79-14.53,1.42-.58,3.67-1.36,5.15-1.56Z" fill="currentColor"/>
+          </svg>
+        </a>
+      </div>
+      <button class="ls-menu-toggle" id="ls-menu-toggle">
+        <span class="ls-hamburger-line"></span>
+        <span class="ls-hamburger-line"></span>
+      </button>
+    </div>
+    <div class="ls-mobile-menu-content" id="ls-mobile-menu-content">
+      <button class="ls-menu-close" id="ls-menu-close">&times;</button>
+      <a href="#work" class="ls-nav-link">Work</a>
+      <a href="#services" class="ls-nav-link">Services</a>
+      <a href="#faq" class="ls-nav-link">FAQ</a>
+      <a href="contact.html" class="ls-nav-link">Contact</a>
+    </div>
+  </nav>
+
+  <!-- ==================== HERO ==================== -->
+  <section class="ls-hero" id="ls-hero">
+    <video class="ls-hero-video" autoplay loop muted playsinline>
+      <source src="assets/hero-bg-video.mp4" type="video/mp4">
+    </video>
+
+    <div class="ls-icon-item ls-icon-1" data-ls-drag>
+      <img src="assets/hero-chess.png" alt="Chess Knight">
+    </div>
+    <div class="ls-icon-item ls-icon-2" data-ls-drag>
+      <img src="assets/hero-knight.png" alt="Knight Helmet">
+    </div>
+    <div class="ls-icon-item ls-icon-3" data-ls-drag>
+      <img src="assets/hero-laptop.png" alt="Laptop">
+    </div>
+    <div class="ls-icon-item ls-icon-4" data-ls-drag>
+      <img src="assets/hero-porsche.png" alt="Porsche">
+    </div>
+
+    <div class="ls-hero-headline">
+      <h1 class="ls-hero-title ls-chrome-shine">Full-stack design &amp; development for high-growth businesses.</h1>
+    </div>
+  </section>
+
+  <!-- ==================== MAIN CONTENT ==================== -->
+  <div class="ls-main-content" id="ls-main-content">
+
+    <!-- SECTION: Hero paragraph (centered, prominent) -->
+    <section class="ls-intro-paragraph">
+      <p class="ls-intro-text ls-reveal ls-scroll-white" data-ls-reveal>
+        We design and build websites that stand out immediately and convert consistently. Every detail is intentional. From layout to load speed, from first impression to final click. The goal is simple: turn attention into action, and traffic into revenue.
+      </p>
+    </section>
+
+    <!-- FLOATING GLOVE -->
+    <div class="ls-floating-glove-wrapper">
+      <div class="ls-icon-item ls-icon-5" data-ls-drag>
+        <img src="assets/hero-glove.png" alt="Peace Sign">
+      </div>
+    </div>
+
+    <!-- ==================== RECENT WORK ==================== -->
+    <section class="ls-work-section" id="work">
+      <div class="ls-section-header ls-reveal" data-ls-reveal>
+        <h2 class="ls-section-title ls-chrome-shine">Recent Work</h2>
+        <p class="ls-section-subtitle ls-scroll-white">Websites we've designed and built for our clients.</p>
+      </div>
+
+      <!-- Filters -->
+      <div class="ls-work-filters ls-reveal" data-ls-reveal>
+        <button class="ls-filter-btn ls-filter-active" data-filter="all">All</button>
+        <button class="ls-filter-btn" data-filter="real-estate">Real Estate</button>
+        <button class="ls-filter-btn" data-filter="designers-pick">Designers Pick</button>
+        <button class="ls-filter-btn" data-filter="ecommerce">E-commerce</button>
+        <button class="ls-filter-btn" data-filter="service-business">Service Business</button>
+        <button class="ls-filter-btn" data-filter="agency">Agency</button>
+      </div>
+
+      <!-- Project Grid -->
+      <div class="ls-work-grid" id="ls-work-grid">
+        <a href="https://eric-lavey-2bd973fae822beee48e577ffc659.webflow.io/" target="_blank" class="ls-project-card" data-category="real-estate designers-pick">
+          <div class="ls-project-img"><img loading="lazy" src="assets/projects/Eric Lavey - Real Estate.jpg" alt="Eric Lavey"></div>
+          <div class="ls-project-info"><span class="ls-project-name">Eric Lavey</span><span class="ls-project-type">Real Estate</span></div>
+        </a>
+        <a href="https://aliceandmalyn.com/" target="_blank" class="ls-project-card" data-category="real-estate designers-pick">
+          <div class="ls-project-img"><img loading="lazy" src="assets/projects/Alice & Malyn - Real Estate.jpg" alt="Alice & Malyn"></div>
+          <div class="ls-project-info"><span class="ls-project-name">Alice &amp; Malyn</span><span class="ls-project-type">Real Estate</span></div>
+        </a>
+        <a href="https://www.reginavannicola.com/" target="_blank" class="ls-project-card" data-category="real-estate designers-pick">
+          <div class="ls-project-img"><img loading="lazy" src="assets/projects/Regina Vannicola - Real Estate.jpg" alt="Regina Vannicola"></div>
+          <div class="ls-project-info"><span class="ls-project-name">Regina Vannicola</span><span class="ls-project-type">Real Estate</span></div>
+        </a>
+        <a href="https://carrolander.com/" target="_blank" class="ls-project-card" data-category="real-estate designers-pick">
+          <div class="ls-project-img"><img loading="lazy" src="assets/projects/Carr Olander - Real Estate.jpg" alt="Carr Olander"></div>
+          <div class="ls-project-info"><span class="ls-project-name">Carr Olander</span><span class="ls-project-type">Real Estate</span></div>
+        </a>
+        <a href="https://villa-de-verano.webflow.io/" target="_blank" class="ls-project-card" data-category="real-estate">
+          <div class="ls-project-img"><img loading="lazy" src="assets/projects/Villa de Verano - Real Estate.jpg" alt="Villa de Verano"></div>
+          <div class="ls-project-info"><span class="ls-project-name">Villa de Verano</span><span class="ls-project-type">Real Estate</span></div>
+        </a>
+        <a href="https://saltaire-staging.webflow.io/" target="_blank" class="ls-project-card" data-category="real-estate">
+          <div class="ls-project-img"><img loading="lazy" src="assets/projects/Saltair House - Real Estate.jpg" alt="Saltaire House"></div>
+          <div class="ls-project-info"><span class="ls-project-name">Saltaire House</span><span class="ls-project-type">Real Estate</span></div>
+        </a>
+        <a href="https://3290keeshen.aliceandmalyn.com/" target="_blank" class="ls-project-card" data-category="real-estate">
+          <div class="ls-project-img"><img loading="lazy" src="assets/projects/Keeshan - Real Estate.jpg" alt="Keeshen Drive"></div>
+          <div class="ls-project-info"><span class="ls-project-name">Keeshen Drive</span><span class="ls-project-type">Real Estate</span></div>
+        </a>
+        <a href="https://remax-house.vercel.app/" target="_blank" class="ls-project-card" data-category="real-estate designers-pick">
+          <div class="ls-project-img"><img loading="lazy" src="assets/projects/Remax House of Real Estate - Real Estate.jpg" alt="Remax House of Real Estate"></div>
+          <div class="ls-project-info"><span class="ls-project-name">Remax House of Real Estate</span><span class="ls-project-type">Real Estate</span></div>
+        </a>
+        <a href="https://navi-tiwana.vercel.app/" target="_blank" class="ls-project-card" data-category="real-estate">
+          <div class="ls-project-img"><img loading="lazy" src="assets/projects/Navi - Real Estate.jpg" alt="Navi Tiwana"></div>
+          <div class="ls-project-info"><span class="ls-project-name">Navi Tiwana</span><span class="ls-project-type">Real Estate</span></div>
+        </a>
+        <a href="https://www.altaassetmgt.com/" target="_blank" class="ls-project-card" data-category="real-estate service-business">
+          <div class="ls-project-img"><img loading="lazy" src="assets/projects/Alta - Service Business.jpg" alt="Alta"></div>
+          <div class="ls-project-info"><span class="ls-project-name">Alta</span><span class="ls-project-type">Service Business</span></div>
+        </a>
+        <a href="https://greenwich-funding.com/" target="_blank" class="ls-project-card" data-category="service-business">
+          <div class="ls-project-img"><img loading="lazy" src="assets/projects/Greenwich Funding - Service Business.jpg" alt="Greenwich Funding"></div>
+          <div class="ls-project-info"><span class="ls-project-name">Greenwich Funding</span><span class="ls-project-type">Service Business</span></div>
+        </a>
+        <a href="https://westgatekoenig.com/" target="_blank" class="ls-project-card" data-category="real-estate">
+          <div class="ls-project-img"><img loading="lazy" src="assets/projects/Westgate Koenig - Services.jpg" alt="Westgate Koenig"></div>
+          <div class="ls-project-info"><span class="ls-project-name">Westgate Koenig</span><span class="ls-project-type">Real Estate</span></div>
+        </a>
+        <a href="https://smart-cleaning-gilt.vercel.app/" target="_blank" class="ls-project-card" data-category="service-business designers-pick">
+          <div class="ls-project-img"><img loading="lazy" src="assets/projects/Smart Cleaning -Services.jpg" alt="Smart Cleaning"></div>
+          <div class="ls-project-info"><span class="ls-project-name">Smart Cleaning</span><span class="ls-project-type">Service Business</span></div>
+        </a>
+        <a href="https://privateyachtingclub.com/" target="_blank" class="ls-project-card" data-category="service-business">
+          <div class="ls-project-img"><img loading="lazy" src="assets/projects/Private Yachting Club -Services.jpg" alt="Private Yachting Club"></div>
+          <div class="ls-project-info"><span class="ls-project-name">Private Yachting Club</span><span class="ls-project-type">Service Business</span></div>
+        </a>
+        <a href="https://cuveeclub.com/" target="_blank" class="ls-project-card" data-category="service-business">
+          <div class="ls-project-img"><img loading="lazy" src="assets/projects/Cuvee Club - Services.jpg" alt="Cuvee Club"></div>
+          <div class="ls-project-info"><span class="ls-project-name">Cuvee Club</span><span class="ls-project-type">Service Business</span></div>
+        </a>
+        <a href="https://purecaninetraining.ca/pages/board-and-train-bundle" target="_blank" class="ls-project-card" data-category="ecommerce">
+          <div class="ls-project-img"><img loading="lazy" src="assets/projects/Pure Canine Training - Ecommerce.jpg" alt="Pure Canine Training"></div>
+          <div class="ls-project-info"><span class="ls-project-name">Pure Canine Training</span><span class="ls-project-type">Ecommerce</span></div>
+        </a>
+        <a href="http://digital-atelier-two.vercel.app/" target="_blank" class="ls-project-card" data-category="designers-pick service-business">
+          <div class="ls-project-img"><img loading="lazy" src="assets/projects/Digital Atelier - Agency.jpg" alt="Digital Atelier"></div>
+          <div class="ls-project-info"><span class="ls-project-name">Digital Atelier</span><span class="ls-project-type">Service Business</span></div>
+        </a>
+        <a href="https://stoycstudios.com/" target="_blank" class="ls-project-card" data-category="designers-pick service-business agency">
+          <div class="ls-project-img"><img loading="lazy" src="assets/projects/Stoyc Studios - Agency.jpg" alt="Stoyc Studios"></div>
+          <div class="ls-project-info"><span class="ls-project-name">Stoyc Studios</span><span class="ls-project-type">Agency</span></div>
+        </a>
+      </div>
+    </section>
+
+    <!-- TAGLINE DIVIDER -->
+    <section class="ls-tagline-divider ls-reveal" data-ls-reveal>
+      <h2 class="ls-tagline-text ls-chrome-shine">Design that stops the scroll.<br><em>Structure that drives the sale.</em></h2>
+      <div class="ls-icon-item ls-icon-rockball" data-ls-drag>
+        <img src="assets/hero-rockball.png" alt="Rock Ball">
+      </div>
+    </section>
+
+    <!-- ==================== WHY LISTELLA ==================== -->
+    <section class="ls-why-section" id="why">
+      <div class="ls-section-header ls-reveal" data-ls-reveal>
+        <h2 class="ls-section-title ls-chrome-shine">Why Listella</h2>
+      </div>
+      <div class="ls-why-grid">
+        <div class="ls-why-card ls-reveal" data-ls-reveal>
+          <div class="ls-why-number">01</div>
+          <h3 class="ls-why-heading ls-chrome-shine">Every pixel is intentional</h3>
+          <p class="ls-why-text ls-scroll-white">We don't use templates. Every website is designed from scratch to match your brand, your market, and your goals. If it doesn't convert, it doesn't ship.</p>
+        </div>
+        <div class="ls-why-card ls-reveal" data-ls-reveal>
+          <div class="ls-why-number">02</div>
+          <h3 class="ls-why-heading ls-chrome-shine">Built for performance</h3>
+          <p class="ls-why-text ls-scroll-white">Fast load speeds, clean code, mobile-first responsive design, and clear conversion paths. Your website becomes your hardest-working asset.</p>
+        </div>
+        <div class="ls-why-card ls-reveal" data-ls-reveal>
+          <div class="ls-why-number">03</div>
+          <h3 class="ls-why-heading ls-chrome-shine">You work with senior talent</h3>
+          <p class="ls-why-text ls-scroll-white">No juniors. No outsourcing. You work directly with the people designing and building your site. That's how we deliver pixel-perfect results, fast.</p>
+        </div>
+        <div class="ls-why-card ls-reveal" data-ls-reveal>
+          <div class="ls-why-number">04</div>
+          <h3 class="ls-why-heading ls-chrome-shine">Beyond the website</h3>
+          <p class="ls-why-text ls-scroll-white">SEO, paid ads, brand identity, and marketing assets. We handle the full picture so everything works together, not just looks good on its own.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== SERVICES ==================== -->
+    <section class="ls-services-section" id="services">
+      <div class="ls-icon-item ls-icon-knight" data-ls-drag>
+        <img src="assets/hero-book.png" alt="Design Book">
+      </div>
+      <div class="ls-section-header ls-reveal" data-ls-reveal>
+        <h2 class="ls-section-title ls-chrome-shine">What We Do</h2>
+      </div>
+      <div class="ls-services-list">
+        <div class="ls-service-item ls-reveal" data-ls-reveal>
+          <div class="ls-service-label">01</div>
+          <div class="ls-service-content">
+            <h3 class="ls-service-name ls-chrome-shine">Website Design &amp; Development</h3>
+            <p class="ls-service-desc ls-scroll-white">Custom websites that feel different the moment someone lands on them. Strong visual identity, clear conversion paths, and a structure built for growth.</p>
+          </div>
+          <div class="ls-service-arrow">&rarr;</div>
+        </div>
+        <div class="ls-service-item ls-reveal" data-ls-reveal>
+          <div class="ls-service-label">02</div>
+          <div class="ls-service-content">
+            <h3 class="ls-service-name ls-chrome-shine">SEO &amp; Search Visibility</h3>
+            <p class="ls-service-desc ls-scroll-white">A great website means nothing if no one sees it. We focus on getting your business in front of the right people through local SEO, on-site optimization, and keyword strategy.</p>
+          </div>
+          <div class="ls-service-arrow">&rarr;</div>
+        </div>
+        <div class="ls-service-item ls-reveal" data-ls-reveal>
+          <div class="ls-service-label">03</div>
+          <div class="ls-service-content">
+            <h3 class="ls-service-name ls-chrome-shine">Paid Advertising</h3>
+            <p class="ls-service-desc ls-scroll-white">Ad campaigns designed to convert, not just generate clicks. From strategy to creative to funnel alignment, every campaign is built around one thing: return.</p>
+          </div>
+          <div class="ls-service-arrow">&rarr;</div>
+        </div>
+        <div class="ls-service-item ls-reveal" data-ls-reveal>
+          <div class="ls-service-label">04</div>
+          <div class="ls-service-content">
+            <h3 class="ls-service-name ls-chrome-shine">Brand &amp; Design</h3>
+            <p class="ls-service-desc ls-scroll-white">Visual systems that feel cohesive across everything. Brand identity, marketing assets, ad creatives, print materials, and visual direction for campaigns.</p>
+          </div>
+          <div class="ls-service-arrow">&rarr;</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== TOOLS WE'VE MASTERED ==================== -->
+    <section class="ls-tools-section ls-reveal" data-ls-reveal>
+      <h3 class="ls-tools-label ls-chrome-shine">Tools We've Mastered</h3>
+      <div class="ls-tools-track">
+        <div class="ls-tools-scroll">
+          <img class="ls-tool-logo" src="assets/logo-figma.svg" alt="Figma">
+          <img class="ls-tool-logo" src="assets/logo-webflow.svg" alt="Webflow">
+          <img class="ls-tool-logo" src="assets/logo-shopify.svg" alt="Shopify">
+          <img class="ls-tool-logo" src="assets/logo-wordpress.svg" alt="WordPress">
+          <img class="ls-tool-logo" src="assets/logo-nextjs.svg" alt="Next.js">
+          <img class="ls-tool-logo" src="assets/logo-tailwind.svg" alt="Tailwind CSS">
+          <img class="ls-tool-logo" src="assets/logo-illustrator.svg" alt="Illustrator">
+          <img class="ls-tool-logo" src="assets/logo-google-ads.svg" alt="Google Ads">
+          <img class="ls-tool-logo" src="assets/logo-meta.svg" alt="Meta">
+          <!-- Duplicate set for seamless loop -->
+          <img class="ls-tool-logo" src="assets/logo-figma.svg" alt="Figma">
+          <img class="ls-tool-logo" src="assets/logo-webflow.svg" alt="Webflow">
+          <img class="ls-tool-logo" src="assets/logo-shopify.svg" alt="Shopify">
+          <img class="ls-tool-logo" src="assets/logo-wordpress.svg" alt="WordPress">
+          <img class="ls-tool-logo" src="assets/logo-nextjs.svg" alt="Next.js">
+          <img class="ls-tool-logo" src="assets/logo-tailwind.svg" alt="Tailwind CSS">
+          <img class="ls-tool-logo" src="assets/logo-illustrator.svg" alt="Illustrator">
+          <img class="ls-tool-logo" src="assets/logo-google-ads.svg" alt="Google Ads">
+          <img class="ls-tool-logo" src="assets/logo-meta.svg" alt="Meta">
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== FAQ ==================== -->
+    <section class="ls-faq-section" id="faq">
+      <div class="ls-icon-item ls-icon-clock" data-ls-drag>
+        <img src="assets/hero-clock.png" alt="Clock">
+      </div>
+      <div class="ls-section-header ls-reveal" data-ls-reveal>
+        <h2 class="ls-section-title ls-chrome-shine">Frequently Asked</h2>
+      </div>
+      <div class="ls-faq-list">
+        <div class="ls-faq-item ls-reveal" data-ls-reveal>
+          <button class="ls-faq-question">What types of businesses do you work with?<span class="ls-faq-icon">+</span></button>
+          <div class="ls-faq-answer"><p>We work across real estate, home services, construction, architecture, e-commerce brands, SaaS products, and professional services. The common thread is businesses that care about presentation, growth, and standing out.</p></div>
+        </div>
+        <div class="ls-faq-item ls-reveal" data-ls-reveal>
+          <button class="ls-faq-question">How long does a website project take?<span class="ls-faq-icon">+</span></button>
+          <div class="ls-faq-answer"><p>Most website projects take 3-6 weeks from kickoff to launch. The timeline depends on scope and content readiness. We move fast without cutting corners.</p></div>
+        </div>
+        <div class="ls-faq-item ls-reveal" data-ls-reveal>
+          <button class="ls-faq-question">Do you use templates?<span class="ls-faq-icon">+</span></button>
+          <div class="ls-faq-answer"><p>Never. Every website is designed from scratch. We believe your business deserves a site that looks and feels like yours, not a slightly modified version of someone else's.</p></div>
+        </div>
+        <div class="ls-faq-item ls-reveal" data-ls-reveal>
+          <button class="ls-faq-question">What platforms do you build on?<span class="ls-faq-icon">+</span></button>
+          <div class="ls-faq-answer"><p>We work with Webflow, Shopify, WordPress, and custom code (Next.js, React). We recommend the right platform based on your needs, not what's easiest for us.</p></div>
+        </div>
+        <div class="ls-faq-item ls-reveal" data-ls-reveal>
+          <button class="ls-faq-question">Do you offer ongoing support?<span class="ls-faq-icon">+</span></button>
+          <div class="ls-faq-answer"><p>Yes. We offer maintenance plans, SEO retainers, and ad management. Many of our clients work with us long-term because we understand their brand inside and out.</p></div>
+        </div>
+        <div class="ls-faq-item ls-reveal" data-ls-reveal>
+          <button class="ls-faq-question">Can you help with SEO and ads too?<span class="ls-faq-icon">+</span></button>
+          <div class="ls-faq-answer"><p>Absolutely. We handle SEO strategy, local search optimization, Google Ads, and Meta Ads. Everything is designed to work together with your website as the foundation.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== CTA ==================== -->
+    <section class="ls-cta-section ls-reveal" data-ls-reveal>
+      <div class="ls-icon-item ls-icon-trex" data-ls-drag>
+        <img src="assets/hero-trex.png" alt="T-Rex Skull">
+      </div>
+      <p class="ls-cta-subtitle ls-scroll-white">Ready to stand out?</p>
+      <h2 class="ls-cta-heading ls-chrome-shine">LET'S WORK</h2>
+      <a href="contact.html" class="ls-cta-link">Get in Touch &rarr;</a>
+    </section>
+
+  </div>
+
+  <!-- Glass dot cursor for hero -->
+  <div class="ls-hero-cursor" id="ls-hero-cursor"></div>
+
+  <!-- Custom cursor for project cards -->
+  <div class="ls-cursor" id="ls-cursor">
+    <span>View Project</span>
+  </div>
+
+  <!-- FOOTER -->
+  <footer class="ls-footer" id="ls-footer">
+    <div class="ls-footer-inner">
+      <div class="ls-footer-left">
+        <div class="ls-toggle" id="ls-theme-toggle">
+          <div class="ls-toggle-switch"><div class="ls-toggle-inner"><div class="ls-toggle-handle"></div></div></div>
+          <div class="ls-toggle-label"><span>Turn on the lights</span><span>Turn off the lights</span></div>
+        </div>
+      </div>
+      <div class="ls-footer-center">
+        <div class="ls-scroll-chevron">
+          <svg width="24" height="14" viewBox="0 0 24 14" fill="none" stroke="currentColor" stroke-width="2">
+            <polyline points="2,2 12,12 22,2">
+              <animate attributeName="opacity" values="0.3;1;0.3" dur="2s" repeatCount="indefinite"/>
+            </polyline>
+          </svg>
+        </div>
+        <div class="ls-footer-globe">
+          <svg viewBox="0 0 80 80" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-width="1.5">
+            <circle cx="40" cy="40" r="38"/><ellipse cx="40" cy="40" rx="18" ry="38"/><ellipse cx="40" cy="40" rx="30" ry="38"/>
+            <line x1="2" y1="40" x2="78" y2="40"/><line x1="40" y1="2" x2="40" y2="78"/>
+            <path d="M8 20 Q40 25 72 20" fill="none"/><path d="M8 60 Q40 55 72 60" fill="none"/>
+          </svg>
+        </div>
+        <div class="ls-footer-center-text">
+          <span>Unapologetically Bold</span>
+          <span>Vancouver &mdash; CA</span>
+        </div>
+      </div>
+      <div class="ls-footer-right-section">
+        <a href="#" class="ls-footer-site-link" target="_blank" rel="noopener">listella.co</a>
+        <a href="#" class="ls-instagram-link" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><circle cx="12" cy="12" r="5"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/>
+          </svg>
+        </a>
+      </div>
+    </div>
+  </footer>
+
+</div>
+<script src="assets/listella-home.js"></script>
+</body>
+</html>
