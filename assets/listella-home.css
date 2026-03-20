@@ -51,7 +51,8 @@ html { scroll-behavior: smooth; }
 .ls-intro-overlay.ls-intro-hidden { pointer-events: none; opacity: 0; transition: opacity 0.6s ease; }
 /* Intro fullscreen videos */
 .ls-intro-video {
-  position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+  position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
+  min-width: 100%; min-height: 100%;
   object-fit: cover; pointer-events: none; z-index: 0;
 }
 .ls-intro-video-mobile { display: none; }
