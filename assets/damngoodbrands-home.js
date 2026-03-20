@@ -421,17 +421,28 @@
 
     if (!toggle || !menu) return;
 
+    var closeBtn = document.getElementById('dgb-menu-close');
+
+    function openMenu() {
+      toggle.classList.add('active');
+      menu.classList.add('dgb-menu-open');
+      document.body.classList.add('dgb-menu-locked');
+    }
+    function closeMenu() {
+      toggle.classList.remove('active');
+      menu.classList.remove('dgb-menu-open');
+      document.body.classList.remove('dgb-menu-locked');
+    }
+
     toggle.addEventListener('click', function() {
-      toggle.classList.toggle('active');
-      menu.classList.toggle('dgb-menu-open');
+      if (menu.classList.contains('dgb-menu-open')) { closeMenu(); } else { openMenu(); }
     });
+
+    if (closeBtn) { closeBtn.addEventListener('click', closeMenu); }
 
     var links = menu.querySelectorAll('.dgb-nav-link');
     links.forEach(function(link) {
-      link.addEventListener('click', function() {
-        toggle.classList.remove('active');
-        menu.classList.remove('dgb-menu-open');
-      });
+      link.addEventListener('click', closeMenu);
     });
   }
 
