@@ -139,12 +139,15 @@
       var startX, startY, initialX, initialY;
       var currentX = 0, currentY = 0;
 
+      var dragThreshold = 10;
+      var dragConfirmed = false;
+
       icon.addEventListener('mousedown', dragStart);
-      icon.addEventListener('touchstart', dragStart, { passive: false });
+      icon.addEventListener('touchstart', dragStart, { passive: true });
 
       function dragStart(e) {
         isDragging = true;
-        icon._lsDragged = true;
+        dragConfirmed = false;
         if (e.type === 'touchstart') {
           startX = e.touches[0].clientX;
           startY = e.touches[0].clientY;
@@ -163,7 +166,6 @@
 
       function drag(e) {
         if (!isDragging) return;
-        e.preventDefault();
 
         var clientX, clientY;
         if (e.type === 'touchmove') {
@@ -174,6 +176,24 @@
           clientY = e.clientY;
         }
 
+        // Only start dragging after threshold — let normal scroll through
+        if (!dragConfirmed) {
+          var dx = Math.abs(clientX - startX);
+          var dy = Math.abs(clientY - startY);
+          // If moving more vertically, it's a scroll — let it through
+          if (dy > dx && dy > dragThreshold) {
+            isDragging = false;
+            return;
+          }
+          if (dx > dragThreshold) {
+            dragConfirmed = true;
+            icon._lsDragged = true;
+          } else {
+            return;
+          }
+        }
+
+        e.preventDefault();
         currentX = initialX + (clientX - startX);
         currentY = initialY + (clientY - startY);
 
@@ -182,6 +202,7 @@
 
       function dragEnd() {
         isDragging = false;
+        dragConfirmed = false;
         document.removeEventListener('mousemove', drag);
         document.removeEventListener('mouseup', dragEnd);
         document.removeEventListener('touchmove', drag);
