@@ -423,15 +423,24 @@
 
     var closeBtn = document.getElementById('dgb-menu-close');
 
+    var scrollY = 0;
     function openMenu() {
+      scrollY = window.scrollY;
       toggle.classList.add('active');
       menu.classList.add('dgb-menu-open');
       document.body.classList.add('dgb-menu-locked');
+      document.body.style.top = '-' + scrollY + 'px';
+      document.body.style.position = 'fixed';
+      document.body.style.width = '100%';
     }
     function closeMenu() {
       toggle.classList.remove('active');
       menu.classList.remove('dgb-menu-open');
       document.body.classList.remove('dgb-menu-locked');
+      document.body.style.position = '';
+      document.body.style.top = '';
+      document.body.style.width = '';
+      window.scrollTo(0, scrollY);
     }
 
     toggle.addEventListener('click', function() {
