@@ -21,16 +21,33 @@
 
   <!-- INTRO OVERLAY -->
   <div class="ls-intro-overlay" id="ls-intro-overlay" style="position:fixed;top:0;left:0;right:0;bottom:0;background:#000;z-index:99999;display:flex;align-items:center;justify-content:center">
-    <video class="ls-intro-video" id="ls-intro-video" autoplay muted playsinline webkit-playsinline preload="auto">
-    </video>
     <script>
       (function(){
-        var v = document.getElementById('ls-intro-video');
-        var source = document.createElement('source');
-        source.src = window.innerWidth <= 800 ? 'assets/intro-mobile.mp4' : 'assets/intro-desktop.mp4';
-        source.type = 'video/mp4';
-        v.appendChild(source);
-        v.load();
+        var overlay = document.getElementById('ls-intro-overlay');
+        if (window.innerWidth <= 800) {
+          // Mobile: use <img> tag — plays as animated image, works in Low Power Mode
+          var img = document.createElement('img');
+          img.src = 'assets/intro-mobile-img.mp4';
+          img.className = 'ls-intro-video';
+          img.setAttribute('role', 'presentation');
+          overlay.insertBefore(img, overlay.firstChild);
+        } else {
+          // Desktop: use <video> tag
+          var v = document.createElement('video');
+          v.className = 'ls-intro-video';
+          v.autoplay = true;
+          v.muted = true;
+          v.playsInline = true;
+          v.setAttribute('playsinline', '');
+          v.setAttribute('webkit-playsinline', '');
+          v.preload = 'auto';
+          var source = document.createElement('source');
+          source.src = 'assets/intro-desktop.mp4';
+          source.type = 'video/mp4';
+          v.appendChild(source);
+          overlay.insertBefore(v, overlay.firstChild);
+          v.load();
+        }
       })();
     </script>
     <div class="ls-intro-counter" id="ls-intro-counter">0</div>
