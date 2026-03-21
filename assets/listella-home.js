@@ -38,33 +38,6 @@
 
     if (!overlay) return;
 
-    // Force autoplay intro videos (mobile Safari requires explicit .play())
-    var autoplayBlocked = false;
-    var introVideos = overlay.querySelectorAll('video');
-    introVideos.forEach(function(v) {
-      v.muted = true;
-      v.setAttribute('muted', '');
-      v.setAttribute('playsinline', '');
-      var playPromise = v.play();
-      if (playPromise !== undefined) {
-        playPromise.catch(function() {
-          // Autoplay blocked (Low Power Mode etc) — skip intro entirely
-          if (!autoplayBlocked) {
-            autoplayBlocked = true;
-            overlay.style.display = 'none';
-            document.body.style.overflow = '';
-            document.body.style.position = '';
-            document.body.style.width = '';
-            if (nav) nav.classList.add('ls-nav-visible');
-            if (mobileNav) mobileNav.classList.add('ls-nav-visible');
-            if (footer) footer.classList.add('ls-footer-visible');
-            if (mainContent) mainContent.classList.add('ls-content-visible');
-            clearInterval(counterInterval);
-          }
-        });
-      }
-    });
-
     // Lock scroll during intro
     document.body.style.overflow = 'hidden';
     document.body.style.position = 'fixed';
