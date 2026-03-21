@@ -77,20 +77,22 @@
       introVideo.addEventListener('ended', function() {
         if (!fadeTriggered) { fadeTriggered = true; fadeOutIntro(); }
       });
-      // Safety fallback in case ended doesn't fire
+      // Safety fallback
       setTimeout(function() {
         if (!fadeTriggered) { fadeTriggered = true; fadeOutIntro(); }
       }, 5000);
     } else if (introImg) {
-      // Mobile <img>: use timeout matching video duration (3.17s), fade just before loop
+      // Mobile <img>: hide the image after one play so it goes to black, then fade out
+      setTimeout(function() {
+        introImg.style.opacity = '0';
+        introImg.style.transition = 'opacity 0.4s ease';
+      }, 2800);
+      // Fade overlay to homepage after going black
       setTimeout(function() {
         if (!fadeTriggered) { fadeTriggered = true; fadeOutIntro(); }
-      }, 3000);
+      }, 3400);
     } else {
-      // No video at all — fade after 3s
-      setTimeout(function() {
-        fadeOutIntro();
-      }, 3000);
+      setTimeout(function() { fadeOutIntro(); }, 3000);
     }
   }
 
