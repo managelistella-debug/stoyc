@@ -43,41 +43,55 @@
     document.body.style.position = 'fixed';
     document.body.style.width = '100vw';
 
-    var count = 0;
-    var maxCount = 3;
-    var counterInterval = setInterval(function() {
-      count++;
-      if (counter) counter.textContent = count;
+    function fadeOutIntro() {
+      // Fade out counter
+      if (counter) counter.style.opacity = '0';
 
-      if (count >= maxCount) {
-        clearInterval(counterInterval);
+      // Short delay then fade overlay into homepage
+      setTimeout(function() {
+        if (mainContent) mainContent.classList.add('ls-content-visible');
+        overlay.classList.add('ls-intro-hidden');
 
-        // Fade out counter
-        if (counter) counter.style.opacity = '0';
+        // Unlock scroll
+        document.body.style.overflow = '';
+        document.body.style.position = '';
+        document.body.style.width = '';
 
-        // After a beat, fade overlay into homepage
+        // Remove overlay from DOM after fade completes, then show nav
         setTimeout(function() {
-          // Show nav + footer + main content slightly before fade starts
-          if (mainContent) mainContent.classList.add('ls-content-visible');
+          overlay.style.display = 'none';
+          if (nav) nav.classList.add('ls-nav-visible');
+          if (mobileNav) mobileNav.classList.add('ls-nav-visible');
+          if (footer) footer.classList.add('ls-footer-visible');
+        }, 1000);
+      }, 300);
+    }
 
-          // Start the fade
-          overlay.classList.add('ls-intro-hidden');
+    // Detect video type and trigger fade at end
+    var introVideo = overlay.querySelector('video');
+    var introImg = overlay.querySelector('img.ls-intro-video');
+    var fadeTriggered = false;
 
-          // Unlock scroll
-          document.body.style.overflow = '';
-          document.body.style.position = '';
-          document.body.style.width = '';
-
-          // Remove overlay from DOM after fade completes, then show nav
-          setTimeout(function() {
-            overlay.style.display = 'none';
-            if (nav) nav.classList.add('ls-nav-visible');
-            if (mobileNav) mobileNav.classList.add('ls-nav-visible');
-            if (footer) footer.classList.add('ls-footer-visible');
-          }, 1000);
-        }, 600);
-      }
-    }, 1000);
+    if (introVideo) {
+      // Desktop: listen for video end
+      introVideo.addEventListener('ended', function() {
+        if (!fadeTriggered) { fadeTriggered = true; fadeOutIntro(); }
+      });
+      // Safety fallback in case ended doesn't fire
+      setTimeout(function() {
+        if (!fadeTriggered) { fadeTriggered = true; fadeOutIntro(); }
+      }, 5000);
+    } else if (introImg) {
+      // Mobile <img>: use timeout matching video duration (3.17s), fade just before loop
+      setTimeout(function() {
+        if (!fadeTriggered) { fadeTriggered = true; fadeOutIntro(); }
+      }, 3000);
+    } else {
+      // No video at all — fade after 3s
+      setTimeout(function() {
+        fadeOutIntro();
+      }, 3000);
+    }
   }
 
   /* === TIME DISPLAY === */
