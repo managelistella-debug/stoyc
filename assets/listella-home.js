@@ -189,7 +189,8 @@
           }
         }
 
-        e.preventDefault();
+        // Only preventDefault on touch to avoid blocking desktop scroll
+        if (e.type === 'touchmove') e.preventDefault();
         currentX = initialX + (clientX - startX);
         currentY = initialY + (clientY - startY);
 
@@ -204,6 +205,11 @@
         document.removeEventListener('touchmove', drag);
         document.removeEventListener('touchend', dragEnd);
       }
+
+      // Safety: end drag if mouse leaves the window
+      document.addEventListener('mouseleave', function() {
+        if (isDragging) dragEnd();
+      });
     });
 
     // Floating animation for icons (only when not dragged)
