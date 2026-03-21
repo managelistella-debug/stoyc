@@ -95,17 +95,13 @@
           document.body.style.position = '';
           document.body.style.width = '';
 
-          // Show nav + footer partway through fade
+          // Remove overlay from DOM after fade completes, then show nav
           setTimeout(function() {
+            overlay.style.display = 'none';
             if (nav) nav.classList.add('ls-nav-visible');
             if (mobileNav) mobileNav.classList.add('ls-nav-visible');
             if (footer) footer.classList.add('ls-footer-visible');
-          }, 400);
-
-          // Remove overlay from DOM after fade completes
-          setTimeout(function() {
-            overlay.style.display = 'none';
-          }, 1400);
+          }, 1000);
         }, 600);
       }
     }, 1000);
