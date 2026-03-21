@@ -4,9 +4,6 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Listella | Design &amp; Marketing Studio</title>
-  <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32.png">
-  <link rel="icon" type="image/png" sizes="192x192" href="assets/favicon.png">
-  <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
   <style>
     @font-face { font-family: 'Listella-UI'; font-weight: 400; src: url('assets/fonts/NordRegular.woff2') format('woff2'); }
     @font-face { font-family: 'Listella-UI'; font-weight: 500; src: url('assets/fonts/NordMedium.woff2') format('woff2'); }
@@ -23,7 +20,7 @@
 <div class="ls-home" id="ls-home">
 
   <!-- INTRO OVERLAY -->
-  <div class="ls-intro-overlay" id="ls-intro-overlay">
+  <div class="ls-intro-overlay" id="ls-intro-overlay" style="position:fixed;top:0;left:0;right:0;bottom:0;background:#000;z-index:99999;display:flex;align-items:center;justify-content:center">
     <video class="ls-intro-video ls-intro-video-desktop" autoplay muted playsinline webkit-playsinline preload="auto">
       <source src="assets/intro-desktop.mp4" type="video/mp4">
     </video>
@@ -34,7 +31,7 @@
   </div>
 
   <!-- DESKTOP NAV -->
-  <nav class="ls-nav" id="ls-nav">
+  <nav class="ls-nav" id="ls-nav" style="opacity:0">
     <div class="ls-nav-inner">
       <div class="ls-nav-group">
         <a href="#work" class="ls-nav-link">Work</a>
@@ -56,7 +53,7 @@
   </nav>
 
   <!-- MOBILE NAV -->
-  <nav class="ls-mobile-nav" id="ls-mobile-nav">
+  <nav class="ls-mobile-nav" id="ls-mobile-nav" style="opacity:0">
     <div class="ls-mobile-header">
       <div style="width:25px"></div>
       <div class="ls-logo">
@@ -106,7 +103,7 @@
   </section>
 
   <!-- ==================== MAIN CONTENT ==================== -->
-  <div class="ls-main-content" id="ls-main-content">
+  <div class="ls-main-content" id="ls-main-content" style="opacity:0">
 
     <!-- SECTION: Hero paragraph (centered, prominent) -->
     <section class="ls-intro-paragraph">
@@ -400,7 +397,7 @@
   </div>
 
   <!-- FOOTER -->
-  <footer class="ls-footer" id="ls-footer">
+  <footer class="ls-footer" id="ls-footer" style="opacity:0">
     <div class="ls-footer-inner">
       <div class="ls-footer-left">
         <div class="ls-toggle" id="ls-theme-toggle">
