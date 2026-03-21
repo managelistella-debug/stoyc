@@ -21,15 +21,14 @@
 
   <!-- INTRO OVERLAY -->
   <div class="ls-intro-overlay" id="ls-intro-overlay" style="position:fixed;top:0;left:0;right:0;bottom:0;background:#000;z-index:99999;display:flex;align-items:center;justify-content:center">
-    <video class="ls-intro-video" id="ls-intro-video" muted playsinline webkit-playsinline preload="auto">
+    <video class="ls-intro-video" id="ls-intro-video" autoplay muted playsinline webkit-playsinline preload="auto">
     </video>
     <script>
       (function(){
         var v = document.getElementById('ls-intro-video');
         var src = window.innerWidth <= 800 ? 'assets/intro-mobile.mp4' : 'assets/intro-desktop.mp4';
         v.src = src;
-        v.muted = true;
-        v.play();
+        v.load();
       })();
     </script>
     <div class="ls-intro-counter" id="ls-intro-counter">0</div>
