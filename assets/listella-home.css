@@ -61,11 +61,6 @@ html { scroll-behavior: smooth; }
 .ls-intro-video::-webkit-media-controls-play-button { display: none !important; }
 .ls-intro-video::-webkit-media-controls-start-playback-button { display: none !important; }
 .ls-intro-video::-moz-media-controls { display: none !important; }
-.ls-intro-video-mobile { display: none; }
-@media (max-width: 800px) {
-  .ls-intro-video-desktop { display: none; }
-  .ls-intro-video-mobile { display: block; }
-}
 .ls-intro-counter {
   display: none;
 }
