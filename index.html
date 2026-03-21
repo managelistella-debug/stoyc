@@ -26,8 +26,10 @@
     <script>
       (function(){
         var v = document.getElementById('ls-intro-video');
-        var src = window.innerWidth <= 800 ? 'assets/intro-mobile.mp4' : 'assets/intro-desktop.mp4';
-        v.src = src;
+        var source = document.createElement('source');
+        source.src = window.innerWidth <= 800 ? 'assets/intro-mobile.mp4' : 'assets/intro-desktop.mp4';
+        source.type = 'video/mp4';
+        v.appendChild(source);
         v.load();
       })();
     </script>
