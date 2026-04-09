@@ -99,6 +99,26 @@
     .contact-submit:hover {
       background: #fff; color: #000; border-color: #fff;
     }
+    .contact-submit:disabled {
+      opacity: 0.45;
+      cursor: not-allowed;
+      pointer-events: none;
+    }
+    .contact-form-status {
+      margin-top: 28px;
+      font-size: 14px;
+      line-height: 1.5;
+      max-width: 500px;
+    }
+    .contact-form-status.is-error { color: #ff8a8a; }
+    .contact-form-status.is-success { color: rgba(255,255,255,0.65); }
+    .contact-hp {
+      position: absolute;
+      left: -9999px;
+      width: 1px;
+      height: 1px;
+      overflow: hidden;
+    }
 
     .contact-footer {
       position: fixed; bottom: 30px; left: 30px; right: 30px;
@@ -137,32 +157,34 @@
       <h1 class="contact-heading">Let's Talk</h1>
       <p class="contact-subtitle">Have a project in mind? Tell us about it. We'll get back to you within 24 hours.</p>
 
-      <form class="contact-form" onsubmit="event.preventDefault(); alert('Message sent! We\'ll be in touch.');">
+      <form class="contact-form" id="stoyc-contact-form" novalidate>
+        <input class="contact-hp" type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true">
         <div class="contact-field">
-          <label>Your Name</label>
-          <input type="text" placeholder="Full name" required>
+          <label for="contact-name">Your Name</label>
+          <input id="contact-name" name="name" type="text" placeholder="Full name" required maxlength="200" autocomplete="name">
         </div>
         <div class="contact-field">
-          <label>Email</label>
-          <input type="email" placeholder="you@company.com" required>
+          <label for="contact-email">Email</label>
+          <input id="contact-email" name="email" type="email" placeholder="you@company.com" required maxlength="320" autocomplete="email">
         </div>
         <div class="contact-field">
-          <label>What do you need?</label>
-          <select required>
+          <label for="contact-service">What do you need?</label>
+          <select id="contact-service" name="service" required>
             <option value="" disabled selected>Select a service</option>
-            <option>Website Design & Development</option>
-            <option>SEO & Search Visibility</option>
-            <option>Paid Advertising</option>
-            <option>Brand & Design</option>
-            <option>Full Package</option>
-            <option>Other</option>
+            <option value="Website Design &amp; Development">Website Design &amp; Development</option>
+            <option value="SEO &amp; Search Visibility">SEO &amp; Search Visibility</option>
+            <option value="Paid Advertising">Paid Advertising</option>
+            <option value="Brand &amp; Design">Brand &amp; Design</option>
+            <option value="Full Package">Full Package</option>
+            <option value="Other">Other</option>
           </select>
         </div>
         <div class="contact-field">
-          <label>Tell us more</label>
-          <textarea placeholder="Brief description of your project, timeline, and goals..."></textarea>
+          <label for="contact-message">Tell us more</label>
+          <textarea id="contact-message" name="message" placeholder="Brief description of your project, timeline, and goals..." maxlength="10000"></textarea>
         </div>
-        <button type="submit" class="contact-submit">Send Message &rarr;</button>
+        <button type="submit" class="contact-submit" id="contact-submit">Send Message &rarr;</button>
+        <p class="contact-form-status" id="contact-form-status" role="status" aria-live="polite"></p>
       </form>
     </div>
   </main>
@@ -171,6 +193,71 @@
     <span>Los Angeles, CA</span>
     <a href="mailto:rafi@stoyc.com">rafi@stoyc.com</a>
   </footer>
+
+  <script>
+    (function () {
+      var form = document.getElementById('stoyc-contact-form');
+      var statusEl = document.getElementById('contact-form-status');
+      var btn = document.getElementById('contact-submit');
+      if (!form || !statusEl || !btn) return;
+
+      function setStatus(text, kind) {
+        statusEl.textContent = text || '';
+        statusEl.className = 'contact-form-status' + (kind ? ' ' + kind : '');
+      }
+
+      form.addEventListener('submit', function (e) {
+        e.preventDefault();
+        setStatus('');
+
+        var fd = new FormData(form);
+        var website = fd.get('website');
+        if (website) {
+          setStatus('Thanks — we\'ll be in touch soon.', 'is-success');
+          return;
+        }
+
+        var payload = {
+          name: (fd.get('name') || '').trim(),
+          email: (fd.get('email') || '').trim(),
+          service: (fd.get('service') || '').trim(),
+          message: (fd.get('message') || '').trim(),
+          website: (fd.get('website') || '').trim()
+        };
+
+        btn.disabled = true;
+        var prevHtml = btn.innerHTML;
+        btn.textContent = 'Sending…';
+
+        fetch('/api/contact', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(payload)
+        })
+          .then(function (res) {
+            return res.json().then(function (data) {
+              return { ok: res.ok, data: data };
+            });
+          })
+          .then(function (result) {
+            if (result.ok && result.data && result.data.ok) {
+              setStatus('Message sent. We\'ll get back to you within 24 hours.', 'is-success');
+              form.reset();
+            } else {
+              var err = (result.data && result.data.error) || 'Something went wrong. Please try again or email us directly.';
+              setStatus(err, 'is-error');
+            }
+          })
+          .catch(function () {
+            setStatus('Could not send. Check your connection or email us directly.', 'is-error');
+          })
+          .finally(function () {
+            btn.disabled = false;
+            btn.innerHTML = prevHtml;
+          });
+      });
+    })();
+  </script>
 
 </body>
 </html>
