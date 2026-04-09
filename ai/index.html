@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI for Real Estate | Stoyc</title>
+  <style>
+    @font-face { font-family: 'Stoyc-UI'; font-weight: 400; src: url('../assets/fonts/NordRegular.woff2') format('woff2'); }
+    @font-face { font-family: 'Stoyc-UI'; font-weight: 500; src: url('../assets/fonts/NordMedium.woff2') format('woff2'); }
+    @font-face { font-family: 'Stoyc-Heading'; font-weight: 900; src: url('../assets/fonts/NeueMontrealBold.woff2') format('woff2'); }
+    @font-face { font-family: 'Stoyc-Blackletter'; font-weight: 400; src: url('../assets/fonts/Chomsky.woff2') format('woff2'); }
+    @font-face { font-family: 'Stoyc-Serif'; font-weight: 400; src: url('../assets/fonts/InstrumentSerif-Regular.ttf') format('truetype'); }
+    @font-face { font-family: 'Stoyc-Condensed'; font-weight: 400; src: url('../assets/fonts/F37Stout-BlackCompressed.ttf') format('truetype'); }
+    html, body { margin: 0; padding: 0; background: #000; overflow-x: hidden; }
+    body { min-height: 100vh; }
+  </style>
+  <link rel="stylesheet" href="../assets/stoyc-ai.css">
+</head>
+<body>
+<div class="ls-home" id="ls-home" data-intro="off">
+
+  <!-- DESKTOP NAV -->
+  <nav class="ls-nav" id="ls-nav">
+    <div class="ls-nav-inner">
+      <div class="ls-nav-group">
+        <a href="/" class="ls-nav-link">Home</a>
+        <a href="#services" class="ls-nav-link">Services</a>
+      </div>
+      <div class="ls-logo">
+        <a href="/">
+          <img src="../assets/stoyc-logo.svg" alt="Stoyc" width="130" height="29">
+        </a>
+      </div>
+      <div class="ls-nav-group">
+        <a href="#faq" class="ls-nav-link">FAQ</a>
+        <a href="../contact.html" class="ls-nav-link">Contact</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- MOBILE NAV -->
+  <nav class="ls-mobile-nav" id="ls-mobile-nav">
+    <div class="ls-mobile-header">
+      <div style="width:25px"></div>
+      <div class="ls-logo">
+        <a href="/">
+          <img src="../assets/stoyc-logo.svg" alt="Stoyc" width="104" height="25">
+        </a>
+      </div>
+      <button class="ls-menu-toggle" id="ls-menu-toggle">
+        <span class="ls-hamburger-line"></span>
+        <span class="ls-hamburger-line"></span>
+      </button>
+    </div>
+    <div class="ls-mobile-menu-content" id="ls-mobile-menu-content">
+      <button class="ls-menu-close" id="ls-menu-close">&times;</button>
+      <a href="/" class="ls-nav-link">Home</a>
+      <a href="#services" class="ls-nav-link">Services</a>
+      <a href="#faq" class="ls-nav-link">FAQ</a>
+      <a href="../contact.html" class="ls-nav-link">Contact</a>
+    </div>
+  </nav>
+
+  <!-- ==================== HERO ==================== -->
+  <section class="ls-hero" id="ls-hero">
+    <div class="ls-hero-scrim" aria-hidden="true"></div>
+    <div class="ls-hero-headline">
+      <h1 class="ls-hero-title ls-chrome-shine">AI built for real estate.</h1>
+      <p class="ls-hero-sub">Save time. Nurture more leads. Operate smarter.</p>
+    </div>
+    <script>
+      (function(){
+        var hero = document.getElementById('ls-hero');
+        if (!hero) return;
+        var url = 'https://eric-lavey.b-cdn.net/1952BEVERLYDRFIX.mp4';
+        var media;
+        if (window.innerWidth <= 800) {
+          media = document.createElement('img');
+          media.src = url;
+          media.className = 'ls-hero-video';
+          media.setAttribute('role', 'presentation');
+          media.setAttribute('alt', '');
+        } else {
+          media = document.createElement('video');
+          media.className = 'ls-hero-video';
+          media.autoplay = true;
+          media.muted = true;
+          media.loop = true;
+          media.playsInline = true;
+          media.setAttribute('playsinline', '');
+          media.setAttribute('webkit-playsinline', '');
+          media.preload = 'auto';
+          var source = document.createElement('source');
+          source.src = url;
+          source.type = 'video/mp4';
+          media.appendChild(source);
+          media.load();
+        }
+        hero.insertBefore(media, hero.firstChild);
+      })();
+    </script>
+  </section>
+
+  <!-- ==================== MAIN CONTENT ==================== -->
+  <div class="ls-main-content" id="ls-main-content">
+
+    <!-- INTRO PARAGRAPH -->
+    <section class="ls-intro-paragraph">
+      <p class="ls-intro-text ls-reveal ls-scroll-white" data-ls-reveal>
+        Your competitors are still answering follow-up emails at 10pm. Yours are automated. The agents and teams winning the next five years aren't working harder &mdash; they're deploying smarter systems. We build those systems for real estate.
+      </p>
+    </section>
+
+    <!-- ==================== WHY AI ==================== -->
+    <section class="ls-why-section" id="why">
+      <div class="ls-section-header ls-reveal" data-ls-reveal>
+        <h2 class="ls-section-title ls-chrome-shine">Why AI</h2>
+      </div>
+      <div class="ls-why-grid">
+        <div class="ls-why-card ls-reveal" data-ls-reveal>
+          <div class="ls-why-number">01</div>
+          <h3 class="ls-why-heading ls-chrome-shine">Save 10+ hours a week</h3>
+          <p class="ls-why-text ls-scroll-white">Automate the repetitive: follow-ups, content creation, scheduling, reporting. Reclaim the hours you're losing to tasks AI handles better and faster.</p>
+        </div>
+        <div class="ls-why-card ls-reveal" data-ls-reveal>
+          <div class="ls-why-number">02</div>
+          <h3 class="ls-why-heading ls-chrome-shine">Nurture every lead, automatically</h3>
+          <p class="ls-why-text ls-scroll-white">AI that responds, qualifies, and stays in touch around the clock at a fraction of the cost of extra staff. No lead falls through the cracks.</p>
+        </div>
+        <div class="ls-why-card ls-reveal" data-ls-reveal>
+          <div class="ls-why-number">03</div>
+          <h3 class="ls-why-heading ls-chrome-shine">Move faster than your competition</h3>
+          <p class="ls-why-text ls-scroll-white">The real estate businesses adopting AI now will own the market in five years. The ones who don't will be playing catch-up.</p>
+        </div>
+        <div class="ls-why-card ls-reveal" data-ls-reveal>
+          <div class="ls-why-number">04</div>
+          <h3 class="ls-why-heading ls-chrome-shine">Built for how real estate actually works</h3>
+          <p class="ls-why-text ls-scroll-white">Lead flow, listing content, client communication, operations. We know your business inside and out, and we build around it.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== SERVICES ==================== -->
+    <section class="ls-services-section" id="services">
+      <div class="ls-section-header ls-reveal" data-ls-reveal>
+        <h2 class="ls-section-title ls-chrome-shine">What We Offer</h2>
+      </div>
+      <div class="ls-services-list">
+        <div class="ls-service-item ls-reveal" data-ls-reveal>
+          <div class="ls-service-label">01</div>
+          <div class="ls-service-content">
+            <h3 class="ls-service-name ls-chrome-shine">Business Audit &amp; Strategy</h3>
+            <p class="ls-service-desc">We evaluate your current operations, identify where AI can save you the most time and money, and map out a clear path forward.</p>
+          </div>
+          <div class="ls-service-arrow">&rarr;</div>
+        </div>
+        <div class="ls-service-item ls-reveal" data-ls-reveal>
+          <div class="ls-service-label">02</div>
+          <div class="ls-service-content">
+            <h3 class="ls-service-name ls-chrome-shine">1-on-1 Training &amp; Implementation</h3>
+            <p class="ls-service-desc">Private sessions where we walk through the tools, set up your systems, and get you actually using AI in your daily workflow.</p>
+          </div>
+          <div class="ls-service-arrow">&rarr;</div>
+        </div>
+        <div class="ls-service-item ls-reveal" data-ls-reveal>
+          <div class="ls-service-label">03</div>
+          <div class="ls-service-content">
+            <h3 class="ls-service-name ls-chrome-shine">Custom AI System Buildouts</h3>
+            <p class="ls-service-desc">We build the tools for you. Custom automations, AI assistants, content pipelines, and workflows designed around your specific business.</p>
+          </div>
+          <div class="ls-service-arrow">&rarr;</div>
+        </div>
+        <div class="ls-service-item ls-reveal" data-ls-reveal>
+          <div class="ls-service-label">04</div>
+          <div class="ls-service-content">
+            <h3 class="ls-service-name ls-chrome-shine">Content, SEO &amp; AI Marketing</h3>
+            <p class="ls-service-desc">AI-powered blog content, listing copy, social media, and SEO strategy. More visibility, less manual work.</p>
+          </div>
+          <div class="ls-service-arrow">&rarr;</div>
+        </div>
+        <div class="ls-service-item ls-reveal" data-ls-reveal>
+          <div class="ls-service-label">05</div>
+          <div class="ls-service-content">
+            <h3 class="ls-service-name ls-chrome-shine">Ongoing Support &amp; Optimization</h3>
+            <p class="ls-service-desc">AI is always evolving. We stay ahead of the curve so you don't have to. Continuous refinement, new tools, better results.</p>
+          </div>
+          <div class="ls-service-arrow">&rarr;</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- TAGLINE DIVIDER -->
+    <section class="ls-tagline-divider ls-reveal" data-ls-reveal>
+      <h2 class="ls-tagline-text ls-chrome-shine">Work smarter.<br><em>Close more.</em></h2>
+    </section>
+
+    <!-- ==================== TOOLS WE WORK WITH ==================== -->
+    <section class="ls-tools-section ls-reveal" data-ls-reveal>
+      <h3 class="ls-tools-label ls-chrome-shine">Tools &amp; Platforms We Work With</h3>
+      <div class="ls-tools-track">
+        <div class="ls-tools-scroll">
+          <span class="ls-tool-text">Claude</span>
+          <span class="ls-tool-text">ChatGPT</span>
+          <span class="ls-tool-text">Manus</span>
+          <img class="ls-tool-logo" src="../assets/logo-google-ads.svg" alt="Google Ads">
+          <img class="ls-tool-logo" src="../assets/logo-meta.svg" alt="Meta">
+          <img class="ls-tool-logo" src="../assets/logo-webflow.svg" alt="Webflow">
+          <img class="ls-tool-logo" src="../assets/logo-wordpress.svg" alt="WordPress">
+          <img class="ls-tool-logo" src="../assets/logo-shopify.svg" alt="Shopify">
+          <img class="ls-tool-logo" src="../assets/logo-figma.svg" alt="Figma">
+          <span class="ls-tool-text ls-tool-more">and more</span>
+          <!-- Duplicate set for seamless loop -->
+          <span class="ls-tool-text">Claude</span>
+          <span class="ls-tool-text">ChatGPT</span>
+          <span class="ls-tool-text">Manus</span>
+          <img class="ls-tool-logo" src="../assets/logo-google-ads.svg" alt="Google Ads">
+          <img class="ls-tool-logo" src="../assets/logo-meta.svg" alt="Meta">
+          <img class="ls-tool-logo" src="../assets/logo-webflow.svg" alt="Webflow">
+          <img class="ls-tool-logo" src="../assets/logo-wordpress.svg" alt="WordPress">
+          <img class="ls-tool-logo" src="../assets/logo-shopify.svg" alt="Shopify">
+          <img class="ls-tool-logo" src="../assets/logo-figma.svg" alt="Figma">
+          <span class="ls-tool-text ls-tool-more">and more</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== FAQ ==================== -->
+    <section class="ls-faq-section" id="faq">
+      <div class="ls-section-header ls-reveal" data-ls-reveal>
+        <h2 class="ls-section-title ls-chrome-shine">Frequently Asked</h2>
+      </div>
+      <div class="ls-faq-list">
+        <div class="ls-faq-item ls-reveal" data-ls-reveal>
+          <button class="ls-faq-question">What does an AI audit involve?<span class="ls-faq-icon">+</span></button>
+          <div class="ls-faq-answer"><p>We look at your current tools, workflows, lead sources, and daily operations. Then we identify exactly where AI can save you time, reduce costs, or generate more revenue, and build a prioritized action plan.</p></div>
+        </div>
+        <div class="ls-faq-item ls-reveal" data-ls-reveal>
+          <button class="ls-faq-question">Do I need to be tech-savvy?<span class="ls-faq-icon">+</span></button>
+          <div class="ls-faq-answer"><p>Not at all. We meet you where you are. Whether you've never used AI or you're already experimenting, we tailor everything to your comfort level and build systems that are easy to use day to day.</p></div>
+        </div>
+        <div class="ls-faq-item ls-reveal" data-ls-reveal>
+          <button class="ls-faq-question">Which AI platforms do you use?<span class="ls-faq-icon">+</span></button>
+          <div class="ls-faq-answer"><p>We work across the leading platforms including Claude, ChatGPT, Manus, and many others. We match the right tools to your specific needs rather than forcing a one-size-fits-all solution.</p></div>
+        </div>
+        <div class="ls-faq-item ls-reveal" data-ls-reveal>
+          <button class="ls-faq-question">Can this replace my current staff?<span class="ls-faq-icon">+</span></button>
+          <div class="ls-faq-answer"><p>AI isn't about replacing people. It's about giving your team superpowers. Think of it as adding a tireless assistant that handles the repetitive work so your team can focus on relationships and closing deals.</p></div>
+        </div>
+        <div class="ls-faq-item ls-reveal" data-ls-reveal>
+          <button class="ls-faq-question">How quickly can I see results?<span class="ls-faq-icon">+</span></button>
+          <div class="ls-faq-answer"><p>Many of our clients see time savings in the first week. Bigger operational improvements typically take two to four weeks to fully implement and start compounding.</p></div>
+        </div>
+        <div class="ls-faq-item ls-reveal" data-ls-reveal>
+          <button class="ls-faq-question">Do you work with individual agents or teams only?<span class="ls-faq-icon">+</span></button>
+          <div class="ls-faq-answer"><p>Both. Whether you're a solo agent looking to level up or a brokerage wanting to equip your entire team, we scale our approach to fit.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== CTA ==================== -->
+    <section class="ls-cta-section ls-reveal" data-ls-reveal>
+      <p class="ls-cta-subtitle ls-scroll-white">Ready to build smarter?</p>
+      <h2 class="ls-cta-heading ls-chrome-shine">LET'S BUILD</h2>
+      <a href="../contact.html" class="ls-cta-link">Get in Touch &rarr;</a>
+    </section>
+
+  </div>
+
+  <!-- FOOTER -->
+  <footer class="ls-footer" id="ls-footer">
+    <div class="ls-footer-inner">
+      <div class="ls-footer-left">
+        <div class="ls-toggle" id="ls-theme-toggle">
+          <div class="ls-toggle-switch"><div class="ls-toggle-inner"><div class="ls-toggle-handle"></div></div></div>
+          <div class="ls-toggle-label"><span>Turn on the lights</span><span>Turn off the lights</span></div>
+        </div>
+      </div>
+      <div class="ls-footer-center">
+        <div class="ls-scroll-chevron">
+          <svg width="24" height="14" viewBox="0 0 24 14" fill="none" stroke="currentColor" stroke-width="2">
+            <polyline points="2,2 12,12 22,2">
+              <animate attributeName="opacity" values="0.3;1;0.3" dur="2s" repeatCount="indefinite"/>
+            </polyline>
+          </svg>
+        </div>
+        <div class="ls-footer-globe">
+          <svg viewBox="0 0 80 80" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-width="1.5">
+            <circle cx="40" cy="40" r="38"/><ellipse cx="40" cy="40" rx="18" ry="38"/><ellipse cx="40" cy="40" rx="30" ry="38"/>
+            <line x1="2" y1="40" x2="78" y2="40"/><line x1="40" y1="2" x2="40" y2="78"/>
+            <path d="M8 20 Q40 25 72 20" fill="none"/><path d="M8 60 Q40 55 72 60" fill="none"/>
+          </svg>
+        </div>
+        <div class="ls-footer-center-text">
+          <span>Unapologetically Bold</span>
+          <span>Los Angeles &mdash; CA</span>
+        </div>
+      </div>
+      <div class="ls-footer-right-section">
+        <a href="https://stoyc.com" class="ls-footer-site-link" target="_blank" rel="noopener">stoyc.com</a>
+        <a href="https://instagram.com/stoycstudios" class="ls-instagram-link" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><circle cx="12" cy="12" r="5"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/>
+          </svg>
+        </a>
+      </div>
+    </div>
+  </footer>
+
+</div>
+<script src="../assets/stoyc-ai.js"></script>
+</body>
+</html>

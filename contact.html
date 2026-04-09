@@ -3,15 +3,15 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Contact | Listella</title>
+  <title>Contact | Stoyc</title>
   <style>
-    @font-face { font-family: 'Listella-UI'; font-weight: 400; src: url('assets/fonts/NordRegular.woff2') format('woff2'); }
-    @font-face { font-family: 'Listella-UI'; font-weight: 500; src: url('assets/fonts/NordMedium.woff2') format('woff2'); }
-    @font-face { font-family: 'Listella-Heading'; font-weight: 900; src: url('assets/fonts/NeueMontrealBold.woff2') format('woff2'); }
-    @font-face { font-family: 'Listella-Condensed'; font-weight: 400; src: url('assets/fonts/F37Stout-BlackCompressed.ttf') format('truetype'); }
-    @font-face { font-family: 'Listella-Serif'; font-weight: 400; src: url('assets/fonts/InstrumentSerif-Regular.ttf') format('truetype'); }
+    @font-face { font-family: 'Stoyc-UI'; font-weight: 400; src: url('assets/fonts/NordRegular.woff2') format('woff2'); }
+    @font-face { font-family: 'Stoyc-UI'; font-weight: 500; src: url('assets/fonts/NordMedium.woff2') format('woff2'); }
+    @font-face { font-family: 'Stoyc-Heading'; font-weight: 900; src: url('assets/fonts/NeueMontrealBold.woff2') format('woff2'); }
+    @font-face { font-family: 'Stoyc-Condensed'; font-weight: 400; src: url('assets/fonts/F37Stout-BlackCompressed.ttf') format('truetype'); }
+    @font-face { font-family: 'Stoyc-Serif'; font-weight: 400; src: url('assets/fonts/InstrumentSerif-Regular.ttf') format('truetype'); }
     html, body { margin: 0; padding: 0; background: #000; color: #fff; overflow-x: hidden; }
-    body { min-height: 100vh; font-family: 'Listella-UI', 'Helvetica Neue', sans-serif; -webkit-font-smoothing: antialiased; }
+    body { min-height: 100vh; font-family: 'Stoyc-UI', 'Helvetica Neue', sans-serif; -webkit-font-smoothing: antialiased; }
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     a { text-decoration: none; color: inherit; }
   </style>
@@ -30,8 +30,7 @@
       transition: transform 0.3s ease;
     }
     .contact-nav a:hover::after { transform: scaleX(1); transform-origin: left; }
-    .contact-nav-logo svg { width: 100px; height: auto; }
-    .contact-nav-logo svg path { fill: #fff; }
+    .contact-nav-logo img { width: 100px; height: auto; display: block; }
     .contact-nav-links { display: flex; gap: 30px; }
 
     .contact-page {
@@ -42,7 +41,7 @@
       width: 100%; max-width: 700px;
     }
     .contact-heading {
-      font-family: 'Listella-Condensed', 'Impact', sans-serif; font-weight: 400;
+      font-family: 'Stoyc-Condensed', 'Impact', sans-serif; font-weight: 400;
       font-size: clamp(48px, 8vw, 120px); text-transform: uppercase;
       line-height: 0.85; letter-spacing: 0.02em; margin-bottom: 20px;
     }
@@ -63,7 +62,7 @@
     .contact-field textarea,
     .contact-field select {
       width: 100%; background: transparent; border: none; outline: none;
-      color: #fff; font-family: 'Listella-Heading', sans-serif; font-weight: 900;
+      color: #fff; font-family: 'Stoyc-Heading', sans-serif; font-weight: 900;
       font-size: clamp(16px, 1.3vw, 22px); padding: 4px 0; resize: none;
     }
     .contact-field select {
@@ -78,7 +77,7 @@
 
     .contact-submit {
       margin-top: 40px; display: inline-flex; align-items: center; gap: 12px;
-      font-family: 'Listella-UI', sans-serif; font-size: 14px; text-transform: uppercase;
+      font-family: 'Stoyc-UI', sans-serif; font-size: 14px; text-transform: uppercase;
       letter-spacing: 0.08em; padding: 18px 44px; border: 1px solid rgba(255,255,255,0.3);
       border-radius: 100px; background: transparent; color: #fff; cursor: pointer;
       transition: all 0.3s ease; align-self: flex-start;
@@ -98,7 +97,10 @@
 
     @media (max-width: 600px) {
       .contact-nav { padding: 20px; }
-      .contact-nav-links { gap: 16px; font-size: 12px; }
+      .contact-nav-links {
+        gap: 10px 14px; font-size: 11px; flex-wrap: wrap;
+        justify-content: flex-end;
+      }
       .contact-page { padding: 100px 20px 120px; }
       .contact-footer { flex-direction: column; align-items: center; gap: 10px; bottom: 20px; }
     }
@@ -108,14 +110,11 @@
 
   <nav class="contact-nav">
     <a href="/" class="contact-nav-logo">
-      <svg viewBox="0 0 412.11 80.95" xmlns="http://www.w3.org/2000/svg">
-        <path d="M192.97,25.37c4.56.96,1.13,8.73-2.13,9.86-6.41,1.03-14.22-.64-20.45.19-.84.11-1.04.12-1.68.72s-4.88,9.79-5.49,11.3c-5.62,14.18-.54,21.37,13.34,12.37,12.96-8.41,17.94-19.64,34.43-25.06,7.98-2.62,25.71-4.99,23.38,8.5-1.61,9.34-18.61,18.32-26.76,21.45-.59.78,3.54,1.79,4.13,1.86,8.99,1.06,20.52-6.51,27.29-11.95,1.27-1.02,5.09-3.95,5.87-4.92.9-1.12,3.76-12.01,5.01-14.9,4.27-9.84,18.59-32.65,29.68-34.62,2.97-.53,6.19,1.22,6.71,4.37,1.77,10.74-8.9,24.59-15.35,32.57-5.7,7.05-9.56,8.02-8.65,18.73,1.62,18.96,21.41-1.92,27.41-6.7,1.33-12.8,20.93-46.86,33.85-48.65,7.33-1.02,8.61,5.07,7.17,11-3.25,13.44-13.62,22.13-21.36,32.36-3.88,5.13-4.22,21.26,4.99,19.86,6.11-.93,17.56-13.34,22.87-17.43,6.48-5,14.3-8.66,22.15-10.95,3.61-1.05,16.98-5.11,16.73,1.79-.16,4.28-6.04,5.01-9.01,6.4-4.84,2.27-17.71,8.69-19.12,13.98-2.43,9.09,9.92,1.47,12.88-.55,5.84-3.99,15.96-15.61,23.14-7.12,3.39,4,.74,13.17,8.26,8.76,3.97-2.33,11.85-11.35,15.36-11.99,3.7-.67,4.9,1.31,4.33,4.81-.88,5.39-11.83,15.33-16.26,18.77-6.68,5.19-19.71,14.08-24.32,1.86-.57-1.52-1.03-6.33-2.73-6.37-5.05,3.23-9.67,7.44-14.99,10.46-11.64,6.6-19.98,6.39-26.31-6.61-8.71,8.04-23.41,16.98-33.13,5.27-3.24-3.9-3.1-6.49-4.54-10.82-.63-1.9-1.16.22-1.91,1-4.9,5.07-15.23,13.29-22.08,14.87-12.23,2.83-18.7-5.67-20.91-16.57-12.8,10.3-27.5,18.78-44.63,17.26-7.01-.62-14.32-4.72-16.83-11.51-5.83,3.81-11.13,8.8-17.98,10.8-11.9,3.48-23.45-.78-24.49-14.15-10.53,10.54-26.68,18.21-41.76,13.67-4.76-1.43-11.2-6.45-7.45-11.78,2.18-3.1,7.57-5.95,11.43-5.14,1.93.4,6.01,4.82,6.96.5,1.05-4.77-4.31-9.12-6.91-12.58-9.69,8.29-17.94,18.47-28.84,25.3-13.7,8.58-26.38,6.36-32.07-9.5-9.44,9.81-29.8,23.06-39.04,5.91S7.22,26.61,18.98,12.68c3.68-4.36,17.62-19.2,22.33-9.39,4.06,8.47-7.45,24.88-12.76,31.42-2.47,3.04-8.09,7.92-9.49,11.14-2.59,5.96-2.45,20.45,7.45,17.51,4.2-1.25,15.18-10.45,18.14-14.01,4.94-5.93,5.75-10.69,14.03-13.8,8.94-3.36,15.34.95,10.94,10.45-1.6,3.45-9.37,12.12-9.24,14.53.17,3.16,3.66,4.33,6.36,4.17,7.09-.42,17.23-10.83,22.56-15.35,1.45-1.23,8.52-6.02,8.8-7.08s-.52-2.15.22-4.05c2.08-5.4,17.6-12.5,20.61-5.54,1.45,3.35-2.11,5.14-1.36,7.57.48,1.58,4.72,4.84,6.03,6.47,2.64,3.27,4.52,7.05,3.74,11.39l-3.49,6.58c2.79-1.46,5.37-3.17,7.87-5.08,2.64-2.01,10.95-8.64,12.73-10.77,2.2-2.64,3.11-9.25,5.55-12.2.14-1.01-.07-.6-.71-.7-4.47-.68-13.03.84-11.65-5.89,1.53-7.47,12.7-3.76,18.06-4.75,1.61-3.02,5.71-11.85,8.59-13.24,3.08-1.48,11.59.3,12.83,3.75.86,2.38-2.37,7.05-3.1,9.56h18.96ZM213.24,43.23c-4.81.8-12.8,8.7-10.46,14.06.51.42.96.12,1.48,0,1.43-.36,10.4-5.83,11.74-6.99,4.35-3.78,3.46-8.1-2.75-7.06Z" fill="currentColor"/>
-        <path d="M76.93,9.2c12.63-1.68,12.12,10.44,3.64,16.1-11.55,7.7-24.17-8.32-8.79-14.53,1.42-.58,3.67-1.36,5.15-1.56Z" fill="currentColor"/>
-      </svg>
+      <img src="assets/stoyc-logo.svg" alt="Stoyc" width="100" height="24">
     </a>
     <div class="contact-nav-links">
-      <a href="/#work">Work</a>
-      <a href="/#faq">FAQ</a>
+      <a href="/marketing">Design and Marketing</a>
+      <a href="/ai">AI Services</a>
     </div>
   </nav>
 
@@ -155,8 +154,8 @@
   </main>
 
   <footer class="contact-footer">
-    <span>Vancouver, CA</span>
-    <a href="mailto:hello@listella.co">hello@listella.co</a>
+    <span>Los Angeles, CA</span>
+    <a href="mailto:rafi@stoyc.com">rafi@stoyc.com</a>
   </footer>
 
 </body>

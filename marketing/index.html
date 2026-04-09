@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Stoyc | Design &amp; Marketing Studio</title>
+  <style>
+    @font-face { font-family: 'Stoyc-UI'; font-weight: 400; src: url('../assets/fonts/NordRegular.woff2') format('woff2'); }
+    @font-face { font-family: 'Stoyc-UI'; font-weight: 500; src: url('../assets/fonts/NordMedium.woff2') format('woff2'); }
+    @font-face { font-family: 'Stoyc-Heading'; font-weight: 900; src: url('../assets/fonts/NeueMontrealBold.woff2') format('woff2'); }
+    @font-face { font-family: 'Stoyc-Blackletter'; font-weight: 400; src: url('../assets/fonts/Chomsky.woff2') format('woff2'); }
+    @font-face { font-family: 'Stoyc-Serif'; font-weight: 400; src: url('../assets/fonts/InstrumentSerif-Regular.ttf') format('truetype'); }
+    @font-face { font-family: 'Stoyc-Condensed'; font-weight: 400; src: url('../assets/fonts/F37Stout-BlackCompressed.ttf') format('truetype'); }
+    html, body { margin: 0; padding: 0; background: #000; overflow-x: hidden; }
+    body { min-height: 100vh; }
+  </style>
+  <link rel="stylesheet" href="../assets/stoyc-home.css">
+</head>
+<body>
+<div class="ls-home" id="ls-home" data-intro="off">
+
+  <!-- INTRO OVERLAY -->
+  <div class="ls-intro-overlay" id="ls-intro-overlay" style="position:fixed;top:0;left:0;right:0;bottom:0;background:#000;z-index:99999;display:flex;align-items:center;justify-content:center">
+    <script>
+      (function(){
+        var home = document.getElementById('ls-home');
+        if (home && home.getAttribute('data-intro') === 'off') return;
+        var overlay = document.getElementById('ls-intro-overlay');
+        if (window.innerWidth <= 800) {
+          // Mobile: use <img> tag — plays as animated image, works in Low Power Mode
+          var img = document.createElement('img');
+          img.src = '../assets/intro-mobile-img.mp4';
+          img.className = 'ls-intro-video';
+          img.setAttribute('role', 'presentation');
+          overlay.insertBefore(img, overlay.firstChild);
+        } else {
+          // Desktop: use <video> tag
+          var v = document.createElement('video');
+          v.className = 'ls-intro-video';
+          v.autoplay = true;
+          v.muted = true;
+          v.playsInline = true;
+          v.setAttribute('playsinline', '');
+          v.setAttribute('webkit-playsinline', '');
+          v.preload = 'auto';
+          var source = document.createElement('source');
+          source.src = '../assets/intro-desktop.mp4';
+          source.type = 'video/mp4';
+          v.appendChild(source);
+          overlay.insertBefore(v, overlay.firstChild);
+          v.load();
+        }
+      })();
+    </script>
+    <div class="ls-intro-counter" id="ls-intro-counter">0</div>
+  </div>
+
+  <!-- DESKTOP NAV -->
+  <nav class="ls-nav" id="ls-nav">
+    <div class="ls-nav-inner">
+      <div class="ls-nav-group">
+        <a href="#work" class="ls-nav-link">Work</a>
+        <a href="#services" class="ls-nav-link">Services</a>
+      </div>
+      <div class="ls-logo">
+        <a href="/">
+          <img src="../assets/stoyc-logo.svg" alt="Stoyc" width="130" height="29">
+        </a>
+      </div>
+      <div class="ls-nav-group">
+        <a href="#faq" class="ls-nav-link">FAQ</a>
+        <a href="/contact.html" class="ls-nav-link">Contact</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- MOBILE NAV -->
+  <nav class="ls-mobile-nav" id="ls-mobile-nav">
+    <div class="ls-mobile-header">
+      <div style="width:25px"></div>
+      <div class="ls-logo">
+        <a href="/">
+          <img src="../assets/stoyc-logo.svg" alt="Stoyc" width="104" height="25">
+        </a>
+      </div>
+      <button class="ls-menu-toggle" id="ls-menu-toggle">
+        <span class="ls-hamburger-line"></span>
+        <span class="ls-hamburger-line"></span>
+      </button>
+    </div>
+    <div class="ls-mobile-menu-content" id="ls-mobile-menu-content">
+      <button class="ls-menu-close" id="ls-menu-close">&times;</button>
+      <a href="#work" class="ls-nav-link">Work</a>
+      <a href="#services" class="ls-nav-link">Services</a>
+      <a href="#faq" class="ls-nav-link">FAQ</a>
+      <a href="/contact.html" class="ls-nav-link">Contact</a>
+    </div>
+  </nav>
+
+  <!-- ==================== HERO ==================== -->
+  <section class="ls-hero" id="ls-hero">
+    <video class="ls-hero-video" autoplay loop muted playsinline>
+      <source src="../assets/hero-bg-video.mp4" type="video/mp4">
+    </video>
+
+    <div class="ls-icon-item ls-icon-1" data-ls-drag>
+      <img src="../assets/hero-chess.png" alt="Chess Knight">
+    </div>
+    <div class="ls-icon-item ls-icon-2" data-ls-drag>
+      <img src="../assets/hero-knight.png" alt="Knight Helmet">
+    </div>
+    <div class="ls-icon-item ls-icon-3" data-ls-drag>
+      <img src="../assets/hero-laptop.png" alt="Laptop">
+    </div>
+    <div class="ls-icon-item ls-icon-4" data-ls-drag>
+      <img src="../assets/hero-porsche.png" alt="Porsche">
+    </div>
+
+    <div class="ls-hero-headline">
+      <h1 class="ls-hero-title ls-chrome-shine">Full-stack design &amp; development for high-growth businesses.</h1>
+    </div>
+  </section>
+
+  <!-- ==================== MAIN CONTENT ==================== -->
+  <div class="ls-main-content" id="ls-main-content">
+
+    <!-- SECTION: Hero paragraph (centered, prominent) -->
+    <section class="ls-intro-paragraph">
+      <p class="ls-intro-text ls-reveal ls-scroll-white" data-ls-reveal>
+        We design and build websites that stand out immediately and convert consistently. Every detail is intentional. From layout to load speed, from first impression to final click. The goal is simple: turn attention into action, and traffic into revenue.
+      </p>
+    </section>
+
+    <!-- FLOATING GLOVE -->
+    <div class="ls-floating-glove-wrapper">
+      <div class="ls-icon-item ls-icon-5" data-ls-drag>
+        <img src="../assets/hero-glove.png" alt="Peace Sign">
+      </div>
+    </div>
+
+    <!-- ==================== RECENT WORK ==================== -->
+    <section class="ls-work-section" id="work">
+      <div class="ls-section-header ls-reveal" data-ls-reveal>
+        <h2 class="ls-section-title ls-chrome-shine">Recent Work</h2>
+        <p class="ls-section-subtitle ls-scroll-white">Websites we've designed and built for our clients.</p>
+      </div>
+
+      <!-- Filters -->
+      <div class="ls-work-filters ls-reveal" data-ls-reveal>
+        <button class="ls-filter-btn ls-filter-active" data-filter="all">All</button>
+        <button class="ls-filter-btn" data-filter="real-estate">Real Estate</button>
+        <button class="ls-filter-btn" data-filter="designers-pick">Designers Pick</button>
+        <button class="ls-filter-btn" data-filter="ecommerce">E-commerce</button>
+        <button class="ls-filter-btn" data-filter="service-business">Service Business</button>
+        <button class="ls-filter-btn" data-filter="agency">Agency</button>
+      </div>
+
+      <!-- Project Grid -->
+      <div class="ls-work-grid" id="ls-work-grid">
+        <!-- 1. Eric Lavey -->
+        <a href="https://eric-lavey-2bd973fae822beee48e577ffc659.webflow.io/" target="_blank" class="ls-project-card" data-category="real-estate designers-pick">
+          <div class="ls-project-img"><img loading="lazy" src="../assets/projects/Eric Lavey - Real Estate.jpg" alt="Eric Lavey"></div>
+          <div class="ls-project-info"><span class="ls-project-name">Eric Lavey</span><span class="ls-project-type">Real Estate</span></div>
+        </a>
+        <!-- 2. Alice & Malyn -->
+        <a href="https://aliceandmalyn.com/" target="_blank" class="ls-project-card" data-category="real-estate designers-pick">
+          <div class="ls-project-img"><img loading="lazy" src="../assets/projects/Alice & Malyn - Real Estate.jpg" alt="Alice & Malyn"></div>
+          <div class="ls-project-info"><span class="ls-project-name">Alice &amp; Malyn</span><span class="ls-project-type">Real Estate</span></div>
+        </a>
+        <!-- 2. Remax -->
+        <a href="https://remax-house.vercel.app/" target="_blank" class="ls-project-card" data-category="real-estate designers-pick">
+          <div class="ls-project-img"><img loading="lazy" src="../assets/projects/Remax House of Real Estate - Real Estate.jpg" alt="Remax House of Real Estate"></div>
+          <div class="ls-project-info"><span class="ls-project-name">Remax House of Real Estate</span><span class="ls-project-type">Real Estate</span></div>
+        </a>
+        <!-- 3. Stoyc Studios -->
+        <a href="https://stoycstudios.com/" target="_blank" class="ls-project-card" data-category="designers-pick service-business agency">
+          <div class="ls-project-img"><img loading="lazy" src="../assets/projects/Stoyc Studios - Agency.jpg" alt="Stoyc Studios"></div>
+          <div class="ls-project-info"><span class="ls-project-name">Stoyc Studios</span><span class="ls-project-type">Agency</span></div>
+        </a>
+        <!-- 4. Cuvee Club -->
+        <a href="https://cuveeclub.com/" target="_blank" class="ls-project-card" data-category="service-business">
+          <div class="ls-project-img"><img loading="lazy" src="../assets/projects/Cuvee Club - Services.jpg" alt="Cuvee Club"></div>
+          <div class="ls-project-info"><span class="ls-project-name">Cuvee Club</span><span class="ls-project-type">Service Business</span></div>
+        </a>
+        <!-- Carr Olander -->
+        <a href="https://carrolander.com/" target="_blank" class="ls-project-card" data-category="real-estate designers-pick">
+          <div class="ls-project-img"><img loading="lazy" src="../assets/projects/Carr Olander - Real Estate.jpg" alt="Carr Olander"></div>
+          <div class="ls-project-info"><span class="ls-project-name">Carr Olander</span><span class="ls-project-type">Real Estate</span></div>
+        </a>
+        <!-- Smart Cleaning -->
+        <a href="https://smart-cleaning-gilt.vercel.app/" target="_blank" class="ls-project-card" data-category="service-business designers-pick">
+          <div class="ls-project-img"><img loading="lazy" src="../assets/projects/Smart Cleaning -Services.jpg" alt="Smart Cleaning"></div>
+          <div class="ls-project-info"><span class="ls-project-name">Smart Cleaning</span><span class="ls-project-type">Service Business</span></div>
+        </a>
+        <!-- 5. Digital Atelier -->
+        <a href="http://digital-atelier-two.vercel.app/" target="_blank" class="ls-project-card" data-category="designers-pick service-business agency">
+          <div class="ls-project-img"><img loading="lazy" src="../assets/projects/Digital Atelier - Agency.jpg" alt="Digital Atelier"></div>
+          <div class="ls-project-info"><span class="ls-project-name">Digital Atelier</span><span class="ls-project-type">Agency</span></div>
+        </a>
+        <!-- Regina Vannicola -->
+        <a href="https://www.reginavannicola.com/" target="_blank" class="ls-project-card" data-category="real-estate designers-pick">
+          <div class="ls-project-img"><img loading="lazy" src="../assets/projects/Regina Vannicola - Real Estate.jpg" alt="Regina Vannicola"></div>
+          <div class="ls-project-info"><span class="ls-project-name">Regina Vannicola</span><span class="ls-project-type">Real Estate</span></div>
+        </a>
+        <!-- Villa de Verano -->
+        <a href="https://villa-de-verano.webflow.io/" target="_blank" class="ls-project-card" data-category="real-estate">
+          <div class="ls-project-img"><img loading="lazy" src="../assets/projects/Villa de Verano - Real Estate.jpg" alt="Villa de Verano"></div>
+          <div class="ls-project-info"><span class="ls-project-name">Villa de Verano</span><span class="ls-project-type">Real Estate</span></div>
+        </a>
+        <!-- Pure Canine Training -->
+        <a href="https://purecaninetraining.ca/pages/board-and-train-bundle" target="_blank" class="ls-project-card" data-category="ecommerce">
+          <div class="ls-project-img"><img loading="lazy" src="../assets/projects/Pure Canine Training - Ecommerce.jpg" alt="Pure Canine Training"></div>
+          <div class="ls-project-info"><span class="ls-project-name">Pure Canine Training</span><span class="ls-project-type">Ecommerce</span></div>
+        </a>
+        <!-- 6. Saltaire House -->
+        <a href="https://saltaire-staging.webflow.io/" target="_blank" class="ls-project-card" data-category="real-estate">
+          <div class="ls-project-img"><img loading="lazy" src="../assets/projects/Saltair House - Real Estate.jpg" alt="Saltaire House"></div>
+          <div class="ls-project-info"><span class="ls-project-name">Saltaire House</span><span class="ls-project-type">Real Estate</span></div>
+        </a>
+        <!-- 7. Navi Tiwana -->
+        <a href="https://navi-tiwana.vercel.app/" target="_blank" class="ls-project-card" data-category="real-estate">
+          <div class="ls-project-img"><img loading="lazy" src="../assets/projects/Navi - Real Estate.jpg" alt="Navi Tiwana"></div>
+          <div class="ls-project-info"><span class="ls-project-name">Navi Tiwana</span><span class="ls-project-type">Real Estate</span></div>
+        </a>
+        <!-- 8. Alta -->
+        <a href="https://www.altaassetmgt.com/" target="_blank" class="ls-project-card" data-category="real-estate service-business">
+          <div class="ls-project-img"><img loading="lazy" src="../assets/projects/Alta - Service Business.jpg" alt="Alta"></div>
+          <div class="ls-project-info"><span class="ls-project-name">Alta</span><span class="ls-project-type">Service Business</span></div>
+        </a>
+        <!-- 9. Keeshen Drive -->
+        <a href="https://3290keeshen.aliceandmalyn.com/" target="_blank" class="ls-project-card" data-category="real-estate">
+          <div class="ls-project-img"><img loading="lazy" src="../assets/projects/Keeshan - Real Estate.jpg" alt="Keeshen Drive"></div>
+          <div class="ls-project-info"><span class="ls-project-name">Keeshen Drive</span><span class="ls-project-type">Real Estate</span></div>
+        </a>
+        <!-- 10. Westgate Koenig -->
+        <a href="https://westgatekoenig.com/" target="_blank" class="ls-project-card" data-category="real-estate">
+          <div class="ls-project-img"><img loading="lazy" src="../assets/projects/Westgate Koenig - Services.jpg" alt="Westgate Koenig"></div>
+          <div class="ls-project-info"><span class="ls-project-name">Westgate Koenig</span><span class="ls-project-type">Real Estate</span></div>
+        </a>
+        <!-- 11. Greenwich Funding -->
+        <a href="https://greenwich-funding.com/" target="_blank" class="ls-project-card" data-category="service-business">
+          <div class="ls-project-img"><img loading="lazy" src="../assets/projects/Greenwich Funding - Service Business.jpg" alt="Greenwich Funding"></div>
+          <div class="ls-project-info"><span class="ls-project-name">Greenwich Funding</span><span class="ls-project-type">Service Business</span></div>
+        </a>
+        <!-- 12. Private Yachting Club -->
+        <a href="https://privateyachtingclub.com/" target="_blank" class="ls-project-card" data-category="service-business">
+          <div class="ls-project-img"><img loading="lazy" src="../assets/projects/Private Yachting Club -Services.jpg" alt="Private Yachting Club"></div>
+          <div class="ls-project-info"><span class="ls-project-name">Private Yachting Club</span><span class="ls-project-type">Service Business</span></div>
+        </a>
+      </div>
+    </section>
+
+    <!-- TAGLINE DIVIDER -->
+    <section class="ls-tagline-divider ls-reveal" data-ls-reveal>
+      <h2 class="ls-tagline-text ls-chrome-shine">Design that stops the scroll.<br><em>Structure that drives the sale.</em></h2>
+      <div class="ls-icon-item ls-icon-rockball" data-ls-drag>
+        <img src="../assets/hero-rockball.png" alt="Rock Ball">
+      </div>
+    </section>
+
+    <!-- ==================== WHY STOYC ==================== -->
+    <section class="ls-why-section" id="why">
+      <div class="ls-section-header ls-reveal" data-ls-reveal>
+        <h2 class="ls-section-title ls-chrome-shine">Why Stoyc</h2>
+      </div>
+      <div class="ls-why-grid">
+        <div class="ls-why-card ls-reveal" data-ls-reveal>
+          <div class="ls-why-number">01</div>
+          <h3 class="ls-why-heading ls-chrome-shine">Every pixel is intentional</h3>
+          <p class="ls-why-text ls-scroll-white">We don't use templates. Every website is designed from scratch to match your brand, your market, and your goals. If it doesn't convert, it doesn't ship.</p>
+        </div>
+        <div class="ls-why-card ls-reveal" data-ls-reveal>
+          <div class="ls-why-number">02</div>
+          <h3 class="ls-why-heading ls-chrome-shine">Built for performance</h3>
+          <p class="ls-why-text ls-scroll-white">Fast load speeds, clean code, mobile-first responsive design, and clear conversion paths. Your website becomes your hardest-working asset.</p>
+        </div>
+        <div class="ls-why-card ls-reveal" data-ls-reveal>
+          <div class="ls-why-number">03</div>
+          <h3 class="ls-why-heading ls-chrome-shine">You work with senior talent</h3>
+          <p class="ls-why-text ls-scroll-white">No juniors. No outsourcing. You work directly with the people designing and building your site. That's how we deliver pixel-perfect results, fast.</p>
+        </div>
+        <div class="ls-why-card ls-reveal" data-ls-reveal>
+          <div class="ls-why-number">04</div>
+          <h3 class="ls-why-heading ls-chrome-shine">Beyond the website</h3>
+          <p class="ls-why-text ls-scroll-white">SEO, paid ads, brand identity, and marketing assets. We handle the full picture so everything works together, not just looks good on its own.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== SERVICES ==================== -->
+    <section class="ls-services-section" id="services">
+      <div class="ls-icon-item ls-icon-knight" data-ls-drag>
+        <img src="../assets/hero-book.png" alt="Design Book">
+      </div>
+      <div class="ls-section-header ls-reveal" data-ls-reveal>
+        <h2 class="ls-section-title ls-chrome-shine">What We Do</h2>
+      </div>
+      <div class="ls-services-list">
+        <div class="ls-service-item ls-reveal" data-ls-reveal>
+          <div class="ls-service-label">01</div>
+          <div class="ls-service-content">
+            <h3 class="ls-service-name ls-chrome-shine">Website Design &amp; Development</h3>
+            <p class="ls-service-desc ls-scroll-white">Custom websites that feel different the moment someone lands on them. Strong visual identity, clear conversion paths, and a structure built for growth.</p>
+          </div>
+          <div class="ls-service-arrow">&rarr;</div>
+        </div>
+        <div class="ls-service-item ls-reveal" data-ls-reveal>
+          <div class="ls-service-label">02</div>
+          <div class="ls-service-content">
+            <h3 class="ls-service-name ls-chrome-shine">SEO &amp; Search Visibility</h3>
+            <p class="ls-service-desc ls-scroll-white">A great website means nothing if no one sees it. We focus on getting your business in front of the right people through local SEO, on-site optimization, and keyword strategy.</p>
+          </div>
+          <div class="ls-service-arrow">&rarr;</div>
+        </div>
+        <div class="ls-service-item ls-reveal" data-ls-reveal>
+          <div class="ls-service-label">03</div>
+          <div class="ls-service-content">
+            <h3 class="ls-service-name ls-chrome-shine">Paid Advertising</h3>
+            <p class="ls-service-desc ls-scroll-white">Ad campaigns designed to convert, not just generate clicks. From strategy to creative to funnel alignment, every campaign is built around one thing: return.</p>
+          </div>
+          <div class="ls-service-arrow">&rarr;</div>
+        </div>
+        <div class="ls-service-item ls-reveal" data-ls-reveal>
+          <div class="ls-service-label">04</div>
+          <div class="ls-service-content">
+            <h3 class="ls-service-name ls-chrome-shine">Brand &amp; Design</h3>
+            <p class="ls-service-desc ls-scroll-white">Visual systems that feel cohesive across everything. Brand identity, marketing assets, ad creatives, print materials, and visual direction for campaigns.</p>
+          </div>
+          <div class="ls-service-arrow">&rarr;</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== TOOLS WE'VE MASTERED ==================== -->
+    <section class="ls-tools-section ls-reveal" data-ls-reveal>
+      <h3 class="ls-tools-label ls-chrome-shine">Tools We've Mastered</h3>
+      <div class="ls-tools-track">
+        <div class="ls-tools-scroll">
+          <img class="ls-tool-logo" src="../assets/logo-figma.svg" alt="Figma">
+          <img class="ls-tool-logo" src="../assets/logo-webflow.svg" alt="Webflow">
+          <img class="ls-tool-logo" src="../assets/logo-shopify.svg" alt="Shopify">
+          <img class="ls-tool-logo" src="../assets/logo-wordpress.svg" alt="WordPress">
+          <img class="ls-tool-logo" src="../assets/logo-nextjs.svg" alt="Next.js">
+          <img class="ls-tool-logo" src="../assets/logo-tailwind.svg" alt="Tailwind CSS">
+          <img class="ls-tool-logo" src="../assets/logo-illustrator.svg" alt="Illustrator">
+          <img class="ls-tool-logo" src="../assets/logo-google-ads.svg" alt="Google Ads">
+          <img class="ls-tool-logo" src="../assets/logo-meta.svg" alt="Meta">
+          <!-- Duplicate set for seamless loop -->
+          <img class="ls-tool-logo" src="../assets/logo-figma.svg" alt="Figma">
+          <img class="ls-tool-logo" src="../assets/logo-webflow.svg" alt="Webflow">
+          <img class="ls-tool-logo" src="../assets/logo-shopify.svg" alt="Shopify">
+          <img class="ls-tool-logo" src="../assets/logo-wordpress.svg" alt="WordPress">
+          <img class="ls-tool-logo" src="../assets/logo-nextjs.svg" alt="Next.js">
+          <img class="ls-tool-logo" src="../assets/logo-tailwind.svg" alt="Tailwind CSS">
+          <img class="ls-tool-logo" src="../assets/logo-illustrator.svg" alt="Illustrator">
+          <img class="ls-tool-logo" src="../assets/logo-google-ads.svg" alt="Google Ads">
+          <img class="ls-tool-logo" src="../assets/logo-meta.svg" alt="Meta">
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== FAQ ==================== -->
+    <section class="ls-faq-section" id="faq">
+      <div class="ls-icon-item ls-icon-clock" data-ls-drag>
+        <img src="../assets/hero-clock.png" alt="Clock">
+      </div>
+      <div class="ls-section-header ls-reveal" data-ls-reveal>
+        <h2 class="ls-section-title ls-chrome-shine">Frequently Asked</h2>
+      </div>
+      <div class="ls-faq-list">
+        <div class="ls-faq-item ls-reveal" data-ls-reveal>
+          <button class="ls-faq-question">What types of businesses do you work with?<span class="ls-faq-icon">+</span></button>
+          <div class="ls-faq-answer"><p>We work across real estate, home services, construction, architecture, e-commerce brands, SaaS products, and professional services. The common thread is businesses that care about presentation, growth, and standing out.</p></div>
+        </div>
+        <div class="ls-faq-item ls-reveal" data-ls-reveal>
+          <button class="ls-faq-question">How long does a website project take?<span class="ls-faq-icon">+</span></button>
+          <div class="ls-faq-answer"><p>Most website projects take 3-6 weeks from kickoff to launch. The timeline depends on scope and content readiness. We move fast without cutting corners.</p></div>
+        </div>
+        <div class="ls-faq-item ls-reveal" data-ls-reveal>
+          <button class="ls-faq-question">Do you use templates?<span class="ls-faq-icon">+</span></button>
+          <div class="ls-faq-answer"><p>Never. Every website is designed from scratch. We believe your business deserves a site that looks and feels like yours, not a slightly modified version of someone else's.</p></div>
+        </div>
+        <div class="ls-faq-item ls-reveal" data-ls-reveal>
+          <button class="ls-faq-question">What platforms do you build on?<span class="ls-faq-icon">+</span></button>
+          <div class="ls-faq-answer"><p>We work with Webflow, Shopify, WordPress, and custom code (Next.js, React). We recommend the right platform based on your needs, not what's easiest for us.</p></div>
+        </div>
+        <div class="ls-faq-item ls-reveal" data-ls-reveal>
+          <button class="ls-faq-question">Do you offer ongoing support?<span class="ls-faq-icon">+</span></button>
+          <div class="ls-faq-answer"><p>Yes. We offer maintenance plans, SEO retainers, and ad management. Many of our clients work with us long-term because we understand their brand inside and out.</p></div>
+        </div>
+        <div class="ls-faq-item ls-reveal" data-ls-reveal>
+          <button class="ls-faq-question">Can you help with SEO and ads too?<span class="ls-faq-icon">+</span></button>
+          <div class="ls-faq-answer"><p>Absolutely. We handle SEO strategy, local search optimization, Google Ads, and Meta Ads. Everything is designed to work together with your website as the foundation.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== CTA ==================== -->
+    <section class="ls-cta-section ls-reveal" data-ls-reveal>
+      <div class="ls-icon-item ls-icon-trex" data-ls-drag>
+        <img src="../assets/hero-trex.png" alt="T-Rex Skull">
+      </div>
+      <p class="ls-cta-subtitle ls-scroll-white">Ready to stand out?</p>
+      <h2 class="ls-cta-heading ls-chrome-shine">LET'S WORK</h2>
+      <a href="/contact.html" class="ls-cta-link">Get in Touch &rarr;</a>
+    </section>
+
+  </div>
+
+  <!-- Glass dot cursor for hero -->
+  <div class="ls-hero-cursor" id="ls-hero-cursor"></div>
+
+  <!-- Custom cursor for project cards -->
+  <div class="ls-cursor" id="ls-cursor">
+    <span>View Project</span>
+  </div>
+
+  <!-- FOOTER -->
+  <footer class="ls-footer" id="ls-footer">
+    <div class="ls-footer-inner">
+      <div class="ls-footer-left">
+        <div class="ls-toggle" id="ls-theme-toggle">
+          <div class="ls-toggle-switch"><div class="ls-toggle-inner"><div class="ls-toggle-handle"></div></div></div>
+          <div class="ls-toggle-label"><span>Turn on the lights</span><span>Turn off the lights</span></div>
+        </div>
+      </div>
+      <div class="ls-footer-center">
+        <div class="ls-scroll-chevron">
+          <svg width="24" height="14" viewBox="0 0 24 14" fill="none" stroke="currentColor" stroke-width="2">
+            <polyline points="2,2 12,12 22,2">
+              <animate attributeName="opacity" values="0.3;1;0.3" dur="2s" repeatCount="indefinite"/>
+            </polyline>
+          </svg>
+        </div>
+        <div class="ls-footer-globe">
+          <svg viewBox="0 0 80 80" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-width="1.5">
+            <circle cx="40" cy="40" r="38"/><ellipse cx="40" cy="40" rx="18" ry="38"/><ellipse cx="40" cy="40" rx="30" ry="38"/>
+            <line x1="2" y1="40" x2="78" y2="40"/><line x1="40" y1="2" x2="40" y2="78"/>
+            <path d="M8 20 Q40 25 72 20" fill="none"/><path d="M8 60 Q40 55 72 60" fill="none"/>
+          </svg>
+        </div>
+        <div class="ls-footer-center-text">
+          <span>Unapologetically Bold</span>
+          <span>Los Angeles &mdash; CA</span>
+        </div>
+      </div>
+      <div class="ls-footer-right-section">
+        <a href="https://stoyc.com" class="ls-footer-site-link" target="_blank" rel="noopener">stoyc.com</a>
+        <a href="https://instagram.com/stoycstudios" class="ls-instagram-link" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><circle cx="12" cy="12" r="5"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/>
+          </svg>
+        </a>
+      </div>
+    </div>
+  </footer>
+
+</div>
+<script src="../assets/stoyc-home.js"></script>
+</body>
+</html>
