@@ -25,6 +25,18 @@
     initSmoothScroll();
     initScrollWhite();
     initHeroCursor();
+    initHeroBackgroundVideoPlay();
+  }
+
+  /* Match homepage split-panel behavior: recover autoplay after iOS / Low Power restrictions */
+  function initHeroBackgroundVideoPlay() {
+    var heroVideo = document.querySelector('#ls-hero video.ls-hero-video');
+    if (!heroVideo || typeof heroVideo.play !== 'function') return;
+    function ensurePlay() {
+      if (heroVideo.paused) heroVideo.play().catch(function() {});
+    }
+    document.addEventListener('touchstart', ensurePlay, { once: true });
+    document.addEventListener('click', ensurePlay, { once: true });
   }
 
   /* === INTRO SEQUENCE === */
