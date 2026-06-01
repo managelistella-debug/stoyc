@@ -44,7 +44,7 @@ module.exports = async function handler(req, res) {
     }
   }
 
-  const { name, email, service, message, website } = raw;
+  const { name, email, phone, service, message, website } = raw;
 
   if (website) {
     return res.status(200).json({ ok: true });
@@ -54,12 +54,16 @@ module.exports = async function handler(req, res) {
   const serviceTrim = typeof service === 'string' ? service.trim() : '';
   const messageTrim = typeof message === 'string' ? message.trim() : '';
   const emailTrim = typeof email === 'string' ? email.trim() : '';
+  const phoneTrim = typeof phone === 'string' ? phone.trim() : '';
 
   if (!nameTrim || nameTrim.length > 200) {
     return res.status(400).json({ ok: false, error: 'Please enter your name.' });
   }
   if (!isValidEmail(emailTrim)) {
     return res.status(400).json({ ok: false, error: 'Please enter a valid email address.' });
+  }
+  if (!phoneTrim || !/^[\+]?[\d\s\(\)\-\.]{7,20}$/.test(phoneTrim)) {
+    return res.status(400).json({ ok: false, error: 'Please enter a valid phone number.' });
   }
   if (!serviceTrim || serviceTrim.length > 200) {
     return res.status(400).json({ ok: false, error: 'Please select what you need.' });
@@ -89,12 +93,14 @@ module.exports = async function handler(req, res) {
   const html = `
     <p><strong>Name</strong><br>${escapeHtml(nameTrim)}</p>
     <p><strong>Email</strong><br>${escapeHtml(emailTrim)}</p>
+    <p><strong>Phone</strong><br>${escapeHtml(phoneTrim)}</p>
     <p><strong>Service</strong><br>${escapeHtml(serviceTrim)}</p>
     <p><strong>Message</strong><br>${escapeHtml(messageTrim) || '<em>(none)</em>'}</p>
   `;
   const text = [
     `Name: ${nameTrim}`,
     `Email: ${emailTrim}`,
+    `Phone: ${phoneTrim}`,
     `Service: ${serviceTrim}`,
     `Message: ${messageTrim || '(none)'}`,
   ].join('\n');

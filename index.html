@@ -312,7 +312,7 @@
     <a href="/" class="sc-logo">
       <img src="assets/stoyc-logo.svg" alt="Stoyc" width="130" height="29">
     </a>
-    <a href="contact.html" class="sc-contact">Contact</a>
+    <a href="/contact" class="sc-contact">Contact</a>
   </header>
 
   <main class="sc-container">
@@ -366,6 +366,13 @@
           document.body.classList.add('sc-leaving');
           setTimeout(function() { window.location.href = href; }, 450);
         });
+      });
+
+      /* Restore visibility when browser navigates back (bfcache restore) */
+      window.addEventListener('pageshow', function(e) {
+        if (e.persisted) {
+          document.body.classList.remove('sc-leaving');
+        }
       });
 
       /* Guarantee video playback on all devices */

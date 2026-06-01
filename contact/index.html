@@ -6,8 +6,8 @@
   <title>Contact | Stoyc</title>
   <meta name="description" content="Get in touch with Stoyc — luxury creative studio for design, marketing, and AI in real estate.">
   <meta name="theme-color" content="#000000">
-  <link rel="icon" type="image/png" href="assets/favicon.png">
-  <link rel="apple-touch-icon" href="assets/apple-touch-icon.jpg">
+  <link rel="icon" type="image/png" href="../assets/favicon.png">
+  <link rel="apple-touch-icon" href="../assets/apple-touch-icon.jpg">
   <meta property="og:type" content="website">
   <meta property="og:title" content="Contact | Stoyc">
   <meta property="og:description" content="Get in touch with Stoyc — luxury creative studio for design, marketing, and AI in real estate.">
@@ -19,11 +19,11 @@
   <meta name="twitter:description" content="Get in touch with Stoyc — luxury creative studio for design, marketing, and AI in real estate.">
   <meta name="twitter:image" content="https://stoyc.com/assets/og-image.jpg">
   <style>
-    @font-face { font-family: 'Stoyc-UI'; font-weight: 400; src: url('assets/fonts/NordRegular.woff2') format('woff2'); }
-    @font-face { font-family: 'Stoyc-UI'; font-weight: 500; src: url('assets/fonts/NordMedium.woff2') format('woff2'); }
-    @font-face { font-family: 'Stoyc-Heading'; font-weight: 900; src: url('assets/fonts/NeueMontrealBold.woff2') format('woff2'); }
-    @font-face { font-family: 'Stoyc-Condensed'; font-weight: 400; src: url('assets/fonts/F37Stout-BlackCompressed.ttf') format('truetype'); }
-    @font-face { font-family: 'Stoyc-Serif'; font-weight: 400; src: url('assets/fonts/InstrumentSerif-Regular.ttf') format('truetype'); }
+    @font-face { font-family: 'Stoyc-UI'; font-weight: 400; src: url('../assets/fonts/NordRegular.woff2') format('woff2'); }
+    @font-face { font-family: 'Stoyc-UI'; font-weight: 500; src: url('../assets/fonts/NordMedium.woff2') format('woff2'); }
+    @font-face { font-family: 'Stoyc-Heading'; font-weight: 900; src: url('../assets/fonts/NeueMontrealBold.woff2') format('woff2'); }
+    @font-face { font-family: 'Stoyc-Condensed'; font-weight: 400; src: url('../assets/fonts/F37Stout-BlackCompressed.ttf') format('truetype'); }
+    @font-face { font-family: 'Stoyc-Serif'; font-weight: 400; src: url('../assets/fonts/InstrumentSerif-Regular.ttf') format('truetype'); }
     html, body { margin: 0; padding: 0; background: #000; color: #fff; overflow-x: hidden; }
     body { min-height: 100vh; font-family: 'Stoyc-UI', 'Helvetica Neue', sans-serif; -webkit-font-smoothing: antialiased; }
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -144,7 +144,7 @@
 
   <nav class="contact-nav">
     <a href="/" class="contact-nav-logo">
-      <img src="assets/stoyc-logo.svg" alt="Stoyc" width="100" height="24">
+      <img src="../assets/stoyc-logo.svg" alt="Stoyc" width="100" height="24">
     </a>
     <div class="contact-nav-links">
       <a href="/marketing">Design and Marketing</a>
@@ -166,6 +166,10 @@
         <div class="contact-field">
           <label for="contact-email">Email</label>
           <input id="contact-email" name="email" type="email" placeholder="you@company.com" required maxlength="320" autocomplete="email">
+        </div>
+        <div class="contact-field">
+          <label for="contact-phone">Phone</label>
+          <input id="contact-phone" name="phone" type="tel" placeholder="+1 (000) 000-0000" required maxlength="30" autocomplete="tel" pattern="[\+]?[\d\s\(\)\-\.]{7,20}">
         </div>
         <div class="contact-field">
           <label for="contact-service">What do you need?</label>
@@ -221,6 +225,7 @@
         var payload = {
           name: (fd.get('name') || '').trim(),
           email: (fd.get('email') || '').trim(),
+          phone: (fd.get('phone') || '').trim(),
           service: (fd.get('service') || '').trim(),
           message: (fd.get('message') || '').trim(),
           website: (fd.get('website') || '').trim()
