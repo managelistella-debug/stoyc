@@ -240,6 +240,13 @@
       border-radius: 50%; object-fit: contain; padding: 4px;
     }
 
+    .modal-back-btn {
+      background: none; border: none; cursor: pointer;
+      color: var(--text); padding: 4px; margin-right: 4px;
+      display: flex; align-items: center; flex-shrink: 0;
+    }
+    .modal-back-btn svg { width: 22px; height: 22px; }
+
     .modal-meta { flex: 1; }
     .modal-username { font-weight: 600; font-size: 13px; }
     .modal-concept-label { font-size: 11px; color: var(--muted); }
@@ -553,6 +560,9 @@
     <!-- Info panel (right on desktop, below carousel on mobile) -->
     <div class="modal-info-col">
       <div class="modal-post-header">
+        <button class="modal-back-btn" onclick="closeModal(true)" aria-label="Back">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5"/><path d="M12 5l-7 7 7 7"/></svg>
+        </button>
         <div class="modal-avatar-wrap">
           <div class="modal-avatar-inner">
             <img src="../../assets/stoyc-logo.svg" alt="Stoyc">
@@ -562,7 +572,7 @@
           <div class="modal-username">miriam.wells</div>
           <div class="modal-concept-label" id="modalLabel"></div>
         </div>
-        <div class="modal-more" onclick="closeModal()">✕</div>
+        <div class="modal-more" onclick="closeModal(true)">✕</div>
       </div>
 
       <div class="modal-caption" id="modalCaption"></div>
@@ -576,7 +586,7 @@
         </button>
       </div>
 
-      <div class="modal-close"><button onclick="closeModal()">Done</button></div>
+      <div class="modal-close"><button onclick="closeModal(true)">Done</button></div>
     </div>
 
   </div>
@@ -748,10 +758,10 @@ function openModal(postIndex) {
   document.getElementById('modal').classList.add('open');
   document.body.style.overflow = 'hidden';
 
-  // Push ?post=N into the URL so the link is shareable
+  // Push ?post=N so back button closes modal and link is shareable
   const url = new URL(window.location.href);
   url.searchParams.set('post', postIndex);
-  history.replaceState(null, '', url.toString());
+  history.pushState({ post: postIndex }, '', url.toString());
 
   // Reset heart
   const heartBtn = document.querySelector('.modal-action-btn');
@@ -759,14 +769,25 @@ function openModal(postIndex) {
   heartBtn.querySelector('path').style.fill = 'currentColor';
 }
 
-function closeModal() {
+function closeModal(pushHistory = false) {
   document.getElementById('modal').classList.remove('open');
   document.body.style.overflow = '';
-  // Remove ?post param from URL
-  const url = new URL(window.location.href);
-  url.searchParams.delete('post');
-  history.replaceState(null, '', url.toString());
+  // If closed via button (not back), pop the history entry we pushed
+  if (pushHistory) {
+    history.back();
+  } else {
+    const url = new URL(window.location.href);
+    url.searchParams.delete('post');
+    history.replaceState(null, '', url.toString());
+  }
 }
+
+// Browser back button closes modal instead of leaving page
+window.addEventListener('popstate', () => {
+  if (document.getElementById('modal').classList.contains('open')) {
+    closeModal(false);
+  }
+});
 
 function modalSlide(dir) {
   const count = modalPost.images.length;
@@ -796,7 +817,7 @@ document.getElementById('modal').addEventListener('click', e => {
 
 // Esc key
 document.addEventListener('keydown', e => {
-  if (e.key === 'Escape') closeModal();
+  if (e.key === 'Escape') closeModal(true);
   if (e.key === 'ArrowRight') modalSlide(1);
   if (e.key === 'ArrowLeft')  modalSlide(-1);
 });
