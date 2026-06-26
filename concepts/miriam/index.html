@@ -562,13 +562,13 @@
         <button class="modal-back-btn" onclick="closeModal(true)" aria-label="Back">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5"/><path d="M12 5l-7 7 7 7"/></svg>
         </button>
-        <div class="modal-avatar-wrap">
+        <div class="modal-avatar-wrap" onclick="closeModal(true)" style="cursor:pointer">
           <div class="modal-avatar-inner">
             <img src="../../assets/stoyc-logo.svg" alt="Stoyc">
           </div>
         </div>
-        <div class="modal-meta">
-          <div class="modal-username">miriam.wells</div>
+        <div class="modal-meta" onclick="closeModal(true)" style="cursor:pointer">
+          <div class="modal-username">Miriam Wells</div>
           <div class="modal-concept-label" id="modalLabel"></div>
         </div>
         <div class="modal-more" onclick="closeModal(true)">✕</div>
@@ -606,7 +606,7 @@ let altConceptCount  = 0;
 const POSTS = [
   {
     type: 'main', // carousel
-    label: 'Concept 1 — MIRIAM / WELLS',
+    label: 'Concept 1 — MIRIAM WELLS',
     caption: 'Serif wordmark with arch icon. Refined and architectural.',
     images: [
       'images/concept1/2.png',
@@ -733,7 +733,7 @@ function openModal(postIndex) {
 
   const capEl = document.getElementById('modalCaption');
   capEl.innerHTML = modalPost.caption
-    ? `<span class="uname">miriam.wells</span>${modalPost.caption}`
+    ? `<span class="uname">Miriam Wells</span>${modalPost.caption}`
     : '';
 
   const track = document.getElementById('modalTrack');
