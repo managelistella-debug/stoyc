@@ -684,14 +684,28 @@ const POSTS = [
     caption: `Wordmark\n\nA hand-drawn calligraphic script that sits in the company of Cartier and Roger Vivier, brands built on the idea that craft and luxury are inseparable. The letterforms communicate that Miriam's work is not templated or mass-produced. Every client gets something bespoke, every transaction is handled with the attention of someone who has spent a career caring deeply about getting the details exactly right. It is the visual equivalent of a handwritten note in an age of automated everything.\n\nIcon\n\nThe interlocked M and W reads like two sources being cross-referenced, fitting for someone who spent her career verifying facts under pressure before bringing that same investigative rigor to real estate. The high-contrast hairlines mirror the tension her bio describes: bold advocacy executed with discretion. Thick strokes for the conviction, thin ones for the calm underneath.\n\nWe recognize this direction carries an old-world weight, and that Miriam has been clear about wanting to avoid anything that feels dated. What separates this execution is that the heritage is earned. Columbia honors, the NYT, CNN, a family legacy in luxury development. The gravitas belongs to her, so the mark can carry it. Paired with modern photography, a restrained color palette, and clean typographic choices throughout, this becomes timeless rather than traditional.`,
     images: [ 'images/concept8.png' ],
   },
+  {
+    type: 'font',
+    label: 'Font Concept 1',
+    caption: `Font Pairing A\n\nHeader Typeface: Big Caslon\n\nParagraph Typeface: Reckless Neue\n\nAccent Font: HK Grotesk`,
+    images: [ 'images/fontconcept1.png' ],
+  },
+  {
+    type: 'font',
+    label: 'Font Concept 2',
+    caption: `Font Pairing B\n\nHeader Typeface: Termina\n\nParagraph Typeface: Arizona Mix\n\nAccent Font: Akzidenz-Grotesk`,
+    images: [ 'images/fontconcept2.png' ],
+  },
 ];
 
 // ═══════════════════════════════════════════════
 //  Auto-number grid titles
 // ═══════════════════════════════════════════════
 
+let fontConceptCount = 0;
 POSTS.forEach(post => {
-  if (post.type === 'main') { mainConceptCount++; post.gridTitle = `Main Concept ${mainConceptCount}`; }
+  if (post.type === 'main')  { mainConceptCount++; post.gridTitle = `Main Concept ${mainConceptCount}`; }
+  else if (post.type === 'font') { fontConceptCount++; post.gridTitle = `Font Concept ${fontConceptCount}`; }
   else                       { altConceptCount++;  post.gridTitle = `Alt Concept ${altConceptCount}`;  }
 });
 
